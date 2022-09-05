@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { getDocs, addDoc, collection } from "firebase/firestore";
+import { db, auth } from "./Firebase";
+
+import Home from "./components/Home";
+import Create from "./components/Create";
+import Blog from "./components/Blog";
+import Login from "./components/Header/Login";
+import Header from "./components/Header/Header";
+import "./app.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [blogList, setBlogList] = useState([]);
+    const [blogNumber, setBlogNumber] = useState(1);
+    let blogsCollection = collection(db, "blogs");
+
+    // get all blogs from the firebase
+    useEffect(() => {
+        const getPosts = async () => {
+            const data = await getDocs(blogsCollection);
+            const newData = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
+            setBlogList(newData);
+            let highest = 1;
+            newData.map((data) => {
+                if (data.key > highest) highest = data.key;
+            })
+            setBlogNumber(highest);
+        }
+        getPosts();
+    }, [])
+
+    return (
+        <Router>
+            <Routes>
+                <Route path="*" element={<Header />}></Route>
+                <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
+                {
+                    auth.currentUser &&
+                    auth.currentUser.uid == "gZYNOghAIHe2z5hsC9bHd4iiDwG2" &&
+                    <Route path="/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>
+                }
+                {blogList.map((blog) => {
+                    return (
+                        <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogid={blog.id} blogdata={blog}/>}></Route>
+                    )
+                })}
+                <Route path="/login" element={<Login />}></Route>
+            </Routes>
+        </Router>
+    )
 }
 
 export default App;
