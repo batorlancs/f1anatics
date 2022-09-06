@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { getDocs, addDoc, collection } from "firebase/firestore";
 import { db, auth } from "./Firebase";
 
+import Admins from "./admin/admins.json";
+
 import Home from "./components/Home";
 import Create from "./components/Create";
 import Blog from "./components/Blog";
@@ -15,6 +17,11 @@ function App() {
     const [blogList, setBlogList] = useState([]);
     const [blogNumber, setBlogNumber] = useState(1);
     let blogsCollection = collection(db, "blogs");
+
+    function checkIfAdmin() {
+        return auth.currentUser &&
+        (Admins.indexOf(auth.currentUser.uid) !== -1);
+    }
 
     // get all blogs from the firebase
     useEffect(() => {
@@ -36,9 +43,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
                 {
-                    auth.currentUser &&
-                    auth.currentUser.uid == "gZYNOghAIHe2z5hsC9bHd4iiDwG2" &&
-                    <Route path="/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>
+                    checkIfAdmin() &&
+                    <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>
                 }
                 {blogList.map((blog) => {
                     return (
