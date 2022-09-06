@@ -1,0 +1,146 @@
+.bloglist {
+    margin: 0;
+    margin-top: 100px;
+}
+
+.bloglist-cont-box {
+    margin-inline: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: whitesmoke;
+}
+
+.bloglist-cont-horz {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bloglist-cont-picbox {
+    min-width: 350px;
+    width: 60%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.bloglist-cont-pic {
+    width: 250%;
+}
+
+.bloglist-cont-vert {
+    /* background-color: antiquewhite; */
+    padding-left: 25px;
+    padding-block: 25px;
+    width: 100%;
+    height: 250px;
+    padding-right: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bloglist-cont-title {
+    margin: 0;
+    margin-bottom: 10px;
+    color: black;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.bloglist-cont-desc {
+    margin: 0;
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.bloglist-cont-button {
+    margin: 0;
+    margin-top: 20px;
+    height: 50px;
+    width: 180px;
+    border: none;
+    background-color: #5941F2;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.bloglist-cont-button:hover {
+    border: 2px solid #5941F2;
+    color: #5941F2;
+    background-color: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* EVEN STUFF */
+
+
+.bloglist-cont-even {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: #5941F2;
+    /* background-color: white; */
+}
+
+.bloglist-cont-button-even {
+    height: 50px;
+    width: 180px;
+    border: none;
+    background-color: #1d183f;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.bloglist-cont-button-even:hover {
+    border: 2px solid #1d183f;
+    color: #1d183f;
+    background-color: inherit;
+}
+
+.bloglist-cont-vert-even {
+    margin-right: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.bloglist-cont-desc-even {
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.bloglist-cont-picbox-even {
+    min-width: 400px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    box-shadow: 20px 20px #1d183f;
+}

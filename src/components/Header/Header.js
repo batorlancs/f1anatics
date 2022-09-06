@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
-import "./header.css";
+import "./Header.css";
 
 function Header() {
 
@@ -8,13 +8,13 @@ function Header() {
 
     return (
         <div className="header">
-            <h2 className="header-logo">f1anatics</h2>
+            <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button>
             <div className="header-box">
-                <button onClick={() => (navigate("/login"))}>Blogs</button>
-                <button onClick={() => (navigate("/login"))}>Drivers</button>
-                <button onClick={() => (navigate("/login"))}>Teams</button>
-                <button onClick={() => (navigate("/login"))}>Contact</button>
-                <button onClick={() => (navigate("/login"))}>Login</button>
+                <button onClick={() => (navigate("/"))}>blogs</button>
+                <button onClick={() => (navigate("/"))}>drivers</button>
+                <button onClick={() => (navigate("/"))}>teams</button>
+                <button onClick={() => (navigate("/create"))}>create</button>
+                <button onClick={() => (navigate("/login"))}>login</button>
             </div>
         </div>
     )

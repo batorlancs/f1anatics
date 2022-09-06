@@ -8,7 +8,7 @@ import Create from "./components/Create";
 import Blog from "./components/Blog";
 import Login from "./components/Header/Login";
 import Header from "./components/Header/Header";
-import "./app.css";
+import "./App.css";
 
 function App() {
 
@@ -34,7 +34,6 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="*" element={<Header />}></Route>
                 <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
                 {
                     auth.currentUser &&
