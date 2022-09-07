@@ -1,0 +1,100 @@
+.createpage {
+    background-color: lightsalmon;
+}
+
+.create-form {
+    margin-inline: 10%;
+    background-color: whitesmoke;
+    padding: 50px;
+}
+
+.create-titlebox {
+    margin-top: 80px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    background-color: lightsalmon;
+}
+
+.create-title {
+    margin-inline: 10%;
+}
+
+.create-title > h1 {
+    margin: 0;
+    font-size: 45px;
+}
+
+.create-title > p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.create-form > h2 {
+    font-weight: 500;
+}
+
+.create-form > h2 > span {
+    font-size: 18px;
+    font-weight: 400;
+    color: gray;
+    float: right;
+}
+
+.create textarea {
+    padding: 15px;
+    width: 100%;
+    resize: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.create input {
+    width: 100%;
+}
+
+.title, .name, .desc {
+    height: 50px;
+}
+
+.content, .content2 {
+    height: 200px;
+}
+
+.create-button {
+    margin-top: 30px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    background-color: #5941F2;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.create-button:hover {
+    border: 1.5px solid #5941F2;
+    color: #5941F2;
+    background-color: inherit;
+}
+
+.publishing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.publishing-img {
+    margin-top: 20px;
+    width: 60px;
+}
+
+.publishing > h4 {
+    margin-top: 10px;
+    font-weight: 400;
+}

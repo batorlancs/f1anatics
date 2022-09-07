@@ -6,10 +6,10 @@ import { db, auth } from "./Firebase";
 import Admins from "./admin/admins.json";
 
 import Home from "./components/Home";
-import Create from "./components/Create";
+import Create from "./components/Admin/Create";
 import Blog from "./components/Blog";
 import Login from "./components/Header/Login";
-import Header from "./components/Header/Header";
+import Admin from "./components/Admin/Admin";
 import "./App.css";
 
 function App() {
@@ -42,11 +42,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
-                {
-                    checkIfAdmin() &&
-                    <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>
-                }
-                {blogList.map((blog) => {
+                {checkIfAdmin() && <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>}
+                {checkIfAdmin() && <Route path="/admin" element={<Admin />}></Route>}
+                {blogList.map((blog) => {;
                     return (
                         <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogid={blog.id} blogdata={blog}/>}></Route>
                     )

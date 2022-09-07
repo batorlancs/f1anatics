@@ -7,8 +7,9 @@
     margin-inline: 10%;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: whitesmoke;
 }
+
+
 
 .bloglist-cont-horz {
     display: flex;
@@ -18,6 +19,7 @@
 }
 
 .bloglist-cont-picbox {
+    margin: 0;
     min-width: 350px;
     width: 60%;
     height: 250px;
@@ -27,11 +29,12 @@
 }
 
 .bloglist-cont-pic {
-    width: 250%;
+    min-height: 300px;
+    margin: 0;
 }
 
 .bloglist-cont-vert {
-    /* background-color: antiquewhite; */
+    margin: 0;
     padding-left: 25px;
     padding-block: 25px;
     width: 100%;
@@ -77,35 +80,23 @@
     background-color: inherit;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* EVEN STUFF */
 
-
-.bloglist-cont-even {
-    padding-top: 150px;
-    padding-bottom: 150px;
-    background-color: #5941F2;
-    /* background-color: white; */
+.bloglist-cont-horz-even {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.bloglist-cont-button-even {
+/* .bloglist-cont-button-even {
+    margin: 0;
+    margin-top: 20px;
     height: 50px;
     width: 180px;
     border: none;
-    background-color: #1d183f;
-    color: white;
+    background-color: #ebffa4;
+    color: black;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     cursor: pointer;
@@ -113,34 +104,22 @@
 }
 
 .bloglist-cont-button-even:hover {
-    border: 2px solid #1d183f;
-    color: #1d183f;
+    border: 2px solid black;
+    color: black;
     background-color: inherit;
-}
+} */
 
 .bloglist-cont-vert-even {
-    margin-right: 100px;
+    margin: 0;
+    /* background-color: antiquewhite; */
+    padding-right: 25px;
+    padding-block: 25px;
+    height: 250px;
+    padding-left: 60px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
-
-.bloglist-cont-desc-even {
-    margin-top: 0;
-    margin-bottom: 40px;
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: 400;
-    text-align: right;
-}
-
-.bloglist-cont-picbox-even {
-    min-width: 400px;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    display: flex;
     justify-content: center;
-    box-shadow: 20px 20px #1d183f;
+    text-align: right;
 }

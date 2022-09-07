@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Hero.css";
 import HeroPic from "../../pic/hero.jpg";
 import HamiltonPic from "../../pic/hamilton.jpg"
@@ -7,12 +7,43 @@ function Hero(props)  {
 
     let heroBlog = props.blogs.find(o => o.key === props.blogNumber);
 
+    const [ago, setAgo] = useState("");
+
+    useEffect(() => {
+        var today = new Date().getTime();
+        var diff = (today - heroBlog.date.time) / 1000;
+        if (diff < 60) {
+            setAgo("less then a minute ago");
+        } else if (diff < 3600) {
+            diff /= 60;
+            Math.floor(diff) == 1 ?
+            setAgo(`${Math.floor(diff)} minute ago`) :
+            setAgo(`${Math.floor(diff)} minutes ago`);
+        } else if (diff < 86400) {
+            diff /= 3600;
+            Math.floor(diff) == 1 ?
+            setAgo(`${Math.floor(diff)} hour ago`) :
+            setAgo(`${Math.floor(diff)} hours ago`);
+        } else if (diff < 31536000) {
+            diff /= 86400;
+            Math.floor(diff) == 1 ?
+            setAgo(`${Math.floor(diff)} day ago`) :
+            setAgo(`${Math.floor(diff)} days ago`);
+        } else {
+            diff /= 31536000;
+            Math.floor(diff) == 1 ?
+            setAgo(`${Math.floor(diff)} year ago`) :
+            setAgo(`${Math.floor(diff)} years ago`);
+        }
+        console.log(diff);
+    }, [])
+
     return (
         <div className="hero">
             <div className="hero-box">
                 <h1 className="hero-title">{heroBlog.title}</h1>
                 <div className="hero-box-cont">
-                    <p className="hero-buttondesc">Was is just a racing accident? or was it something serious? Did hamilton not leave enough space?</p>
+                    <p className="hero-buttondesc">{heroBlog.desc}</p>
                     <button className="hero-button" onClick={props.navigateToHeroBlog}>read more</button>
                 </div>
             </div>
@@ -23,7 +54,7 @@ function Hero(props)  {
                 </div>
             </div>
             
-            <p className="hero-desc">- 17 hours ago -</p>
+            <p className="hero-desc">{ago}</p>
         </div>
     )
 }
