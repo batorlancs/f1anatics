@@ -1,6 +1,7 @@
 import React from "react";
 import "./Blog.css";
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 function Blog(props) {
 
@@ -30,7 +31,7 @@ function Blog(props) {
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }
                 <h2 className="blog-name"><span>written by </span>{blogdata.name}</h2>
             </div>
-            
+            <Footer />
         </div>
     )
 }

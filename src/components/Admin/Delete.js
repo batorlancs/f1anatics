@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, deleteDoc } from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
 import { db , storage } from "../../Firebase";
+import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./Delete.css";
 
@@ -52,53 +53,56 @@ function Delete(props) {
 
 
     return (
-        <div className="delete">
-            <Header />
-            <div className="delete-titlebox">
-                <div className="delete-title">
-                    <h1>ADMIN BLOG DELETE</h1>
-                    <p>Here you can delete any blogs in the database. Deleted blogs will be gone forever.</p>
+        <>
+            <div className="delete">
+                <Header />
+                <div className="delete-titlebox">
+                    <div className="delete-title">
+                        <h1>ADMIN BLOG DELETE</h1>
+                        <p>Here you can delete any blogs in the database. Deleted blogs will be gone forever.</p>
+                    </div>
                 </div>
-            </div>
-            <div className="delete-cont">
-                {blogsInOrder.slice(0, 100).map((blog) => {
-                    return (
-                        <div className="delete-cont-box" key={blog.id}>
-                            <h2 className="delete-cont-title">{blog.title}</h2>
-                            <div className="delete-cont-buttons">
-                                <button onClick={() => {
-                                    navigate(`/blog/${blog.id}`);
-                                }} className="delete-cont-button1">check blog</button>
-                                <button onClick={() => {
-                                    setDeleteBlogId(blog.id);
-                                    setDeleteBlogKey(blog.key);
-                                }} className="delete-cont-button2">delete blog</button>
+                <div className="delete-cont">
+                    {blogsInOrder.slice(0, 100).map((blog) => {
+                        return (
+                            <div className="delete-cont-box" key={blog.id}>
+                                <h2 className="delete-cont-title">{blog.title}</h2>
+                                <div className="delete-cont-buttons">
+                                    <button onClick={() => {
+                                        navigate(`/blog/${blog.id}`);
+                                    }} className="delete-cont-button1">check blog</button>
+                                    <button onClick={() => {
+                                        setDeleteBlogId(blog.id);
+                                        setDeleteBlogKey(blog.key);
+                                    }} className="delete-cont-button2">delete blog</button>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
-            </div>
-            {deleteBlogId !== "" &&
-            <div className="popup">
-                {/* <div className="popup-box">
-                    this is a pop up
-                </div> */}
-                <div className="popup-box">
-                    <h3>Are you sure you want to delete the blog?</h3>
-                    <p>it will be gone forever, if you do so</p>
-                    <button className="popup-cancel" onClick={() => {
-                        setDeleteBlogId("");
-                        setDeleteBlogKey("");
-                    }}>cancel</button>
-                    <button className="popup-delete" onClick={() => {
-                        
-                        deleteBlogPictures(deleteBlogId, deleteBlogKey);
-                        
-                    }}>delete</button>
+                        )
+                    })}
                 </div>
-                <div className="popup-back"></div>
-            </div>}
-        </div>
+                {deleteBlogId !== "" &&
+                <div className="popup">
+                    {/* <div className="popup-box">
+                        this is a pop up
+                    </div> */}
+                    <div className="popup-box">
+                        <h3>Are you sure you want to delete the blog?</h3>
+                        <p>it will be gone forever, if you do so</p>
+                        <button className="popup-cancel" onClick={() => {
+                            setDeleteBlogId("");
+                            setDeleteBlogKey("");
+                        }}>cancel</button>
+                        <button className="popup-delete" onClick={() => {
+                            
+                            deleteBlogPictures(deleteBlogId, deleteBlogKey);
+                            
+                        }}>delete</button>
+                    </div>
+                    <div className="popup-back"></div>
+                </div>}
+            </div>
+            <Footer />
+        </>
     )
 }
 

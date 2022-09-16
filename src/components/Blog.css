@@ -1,5 +1,6 @@
 .blog {
     margin-top: 80px;
+    margin-bottom: 0;
 }
 
 .blog-mainimgbox {
@@ -12,7 +13,6 @@
 }
 
 .blog-mainimgbox-cont {
-    /* background-color: gray; */
     width: 100%;
     margin-inline: 20%;
 }
@@ -27,6 +27,7 @@
 
 .blog-contentbox {
     background-color: white;
+    padding-bottom: 1px;
 }
 
 .blog-content {

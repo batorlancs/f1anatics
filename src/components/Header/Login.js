@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Header from "./Header";
+import Footer from "../Footer/Footer";
 import GoogleLogo from "../../pic/google.png";
 
 function Login() {
@@ -72,36 +73,39 @@ function Login() {
     }
 
     return (
-        <div className="loginpage">
-            <Header />
-            <div className="login">
-                <div className="login-box1">
-                    <h1>User Login</h1>
+        <>
+            <div className="loginpage">
+                <Header />
+                <div className="login">
+                    <div className="login-box1">
+                        <h1>User Login</h1>
+                    </div>
+                    <div className="login-box2">
+                        <button className="login-google" onClick={signInGoogle}>
+                            <img className="login-googlelogo" src={GoogleLogo}></img>
+                            <span>Continue with Google</span>
+                        </button>
+                        <h3>or with your account</h3>
+                        <input placeholder="email" type="email" onChange={(event) => {
+                            setEmail(event.target.value);
+                            setErrorMsg("");
+                        }}/>
+                        <input placeholder="password" type="password" onChange={(event) => {
+                            setPassword(event.target.value);
+                            setErrorMsg("");
+                        }}/>
+                        { errorMsg !== "" && <h4><span>{errorMsg}</span></h4>}
+                        <button className="login-button" onClick={signIn}>Login</button>
+                        <h4>Not a member yet?</h4>
+                        <button className="signup-button" onClick={() => {
+                            navigate("/signup");
+                        }}>Sign up with a new account</button>
+                    </div>
                 </div>
-                <div className="login-box2">
-                    <button className="login-google" onClick={signInGoogle}>
-                        <img className="login-googlelogo" src={GoogleLogo}></img>
-                        <span>Continue with Google</span>
-                    </button>
-                    <h3>or with your account</h3>
-                    <input placeholder="email" type="email" onChange={(event) => {
-                        setEmail(event.target.value);
-                        setErrorMsg("");
-                    }}/>
-                    <input placeholder="password" type="password" onChange={(event) => {
-                        setPassword(event.target.value);
-                        setErrorMsg("");
-                    }}/>
-                    { errorMsg !== "" && <h4><span>{errorMsg}</span></h4>}
-                    <button className="login-button" onClick={signIn}>Login</button>
-                    <h4>Not a member yet?</h4>
-                    <button className="signup-button" onClick={() => {
-                        navigate("/signup");
-                    }}>Sign up with a new account</button>
-                </div>
+                <div className="loginback"></div>
             </div>
-            <div className="loginback"></div>
-        </div>
+            <Footer />
+        </>
     )
 }
 

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import BlogList from "./HomePage/BlogList";
 import Hero from "./HomePage/Hero";
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 function Home(props) {
 
@@ -23,6 +24,7 @@ function Home(props) {
             {blogs.length > 0 && <Hero blogs={blogs} blogNumber={blogNumber} navigateToHeroBlog={navigateToHeroBlog}/>}
             {blogs.length > 0 && <BlogList blogs={blogs}/>}
             {/* <About /> */}
+            <Footer />
         </div>
     )
 }
