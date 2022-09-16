@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Hero.css";
-import HeroPic from "../../pic/hero.jpg";
-import HamiltonPic from "../../pic/hamilton.jpg"
 
 function Hero(props)  {
 
@@ -35,7 +33,6 @@ function Hero(props)  {
             setAgo(`${Math.floor(diff)} year ago`) :
             setAgo(`${Math.floor(diff)} years ago`);
         }
-        console.log(diff);
     }, [])
 
     return (

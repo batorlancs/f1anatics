@@ -1,0 +1,54 @@
+.admin {
+    background-color: lightsalmon;
+    padding-bottom: 200px;
+}
+
+.admin-titlebox {
+    margin-top: 80px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    background-color: lightsalmon;
+}
+
+.admin-title {
+    margin-inline: 10%;
+}
+
+.admin-title > h1 {
+    margin: 0;
+    font-size: 45px;
+}
+
+.admin-title > p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.admin-linkbox {
+    margin: 0;
+    margin-inline: 10%;
+}
+
+.admin-link {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid black;
+    text-align: center;
+    margin-bottom: 50px;
+    transition-duration: 0.4;
+}
+
+.admin-linklink:link {
+    text-decoration: none;
+    color: black;
+}
+
+.admin-linklink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.admin-link:hover {
+    background-color: rgb(252, 175, 144);
+}

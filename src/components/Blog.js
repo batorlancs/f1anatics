@@ -21,27 +21,13 @@ function Blog(props) {
                 <img className="blog-mainimg" src={blogdata.mainImg}></img>
             </div>
             <div className="blog-contentbox">
-                
-                
-                <div className="blog-content">{blogdata.content.split("\n").map((par) => {
-                    return (
-                        <div className="blog-text">
-                            <p>{par}</p>
-                            <br></br>
-                        </div>    
-                    )
-                })}</div>
+                { blogdata.content &&
+                <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content}}></div> }
                 <div className="blog-secimgbox">
                     <img className="blog-secimg" src={blogdata.secImg}></img>
                 </div>
-                <div className="blog-content">{blogdata.content2.split("\n").map((par) => {
-                    return (
-                        <div className="blog-text">
-                            <p>{par}</p>
-                            <br></br>
-                        </div>    
-                    )
-                })}</div>
+                { blogdata.content2 &&
+                <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }
                 <h2 className="blog-name"><span>written by </span>{blogdata.name}</h2>
             </div>
             

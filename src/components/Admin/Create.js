@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage} from "../../Firebase";
+import { db, storage } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../Header/Header";
 import BlogPrev from "./CreateComp/BlogPrev";
+import CardPrev from "./CreateComp/CardPrev";
 import "./Create.css";
 import Publishing from "../../pic/publishing.svg";
+import TextEditor from "./CreateComp/TextEditor";
 
 function Create(props) {
 
     const [title, setTitle] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
-    const [content, setContent] = useState("");
-    const [content2, setContent2] = useState("");
+    // const [content, setContent] = useState("");
+    // const [content2, setContent2] = useState("");
+
+    const [editor1, setEditor1] = useState(null);
+    const [editor2, setEditor2] = useState(null);
+
+    // console.log(editor1);
+
+    function toggleEditor1(props) {
+        setEditor1(props);
+    }
+
+    function toggleEditor2(props) {
+        setEditor2(props);
+    }
 
     const [imgMain, setImgMain] = useState(null);
     const [imgSec, setImgSec] = useState(null);
@@ -26,14 +41,28 @@ function Create(props) {
                             <h4>publishing...</h4>
                         </div>;
 
+    const [errorMsg, setErrorMsg] = useState("");
+
     const blogsCollection = collection(db, "blogs");
     let navigate = useNavigate();
 
+
     const uploadImages = () => {
-        if (imgMain == null || imgSec == null) {
-            console.log("throw error");
+        // error checking
+        if (title === "" || name === "" || desc === "" || editor1 === "" || editor2 === "") {
+            setErrorMsg("please fill out all forms");
             return;
+        } else {
+            setErrorMsg("");
         }
+
+        if (imgMain == null || imgSec == null) {
+            setErrorMsg("error uploading the images..");
+            return;
+        } else {
+            setErrorMsg("");
+        }
+        
 
         // set loading animation
         setIsPublishing(true);
@@ -65,8 +94,8 @@ function Create(props) {
             title: title,
             name: name,
             desc: desc,
-            content: content,
-            content2, content2,
+            content: editor1,
+            content2: editor2,
             mainImg: url1,
             secImg: url2,
             date: {
@@ -94,72 +123,60 @@ function Create(props) {
                 <div className="create-form">
 
                     {/* TITLE */}
-                    <h2>Insert Title<span>title of the blog</span></h2>
+                    <h2>Insert Title</h2>
                     <textarea className="title" onChange={(event) => {
                         setTitle(event.target.value);
-                    }} placeholder="title..." />
+                        setErrorMsg("");
+                    }} placeholder="title..." maxLength="74"/>
 
                     {/* NAME */}
-                    <h2>Insert Your Name<span>author's name</span></h2>
+                    <h2>Insert Your Name</h2>
                     <textarea className="name" onChange={(event) => {
                         setName(event.target.value);
-                    }} placeholder="name..." />
+                        setErrorMsg("");
+                    }} placeholder="name..." maxLength="50"/>
 
                     {/* DESC */}
-                    <h2>Insert Short Description <span>this will only appear on the homepage</span></h2>
+                    <h2>Insert Short Description</h2>
                     <textarea className="desc" onChange={(event) => {
                         setDesc(event.target.value);
-                    }} placeholder="desc..." />
+                        setErrorMsg("");
+                    }} placeholder="desc..." maxLength="130"/>
 
-                    {/* CONTENT */}
-                    <h2>Insert Content<span>blog paragraphs before picture appears</span></h2>
-                    <textarea className="content"onChange={(event) => {
-                        setContent(event.target.value);
-                    }} placeholder="content..."/>
+                    <h2>Insert Content</h2>
+                    <TextEditor toggleEditor={toggleEditor1}/>
+                    <h2>Insert Content After The Picture</h2>
+                    <TextEditor toggleEditor={toggleEditor2}/>
 
-                    {/* CONTENT2 */}
-                    <h2>Insert Content After The Picture<span>blog paragraphs after picture appears</span></h2>
-                    <textarea className="content2"onChange={(event) => {
-                        setContent2(event.target.value);
-                    }} placeholder="content after picture..."/>
 
                     {/* FILE INPUT MAIN */}
                     <h2>Upload Main Image</h2>
                     <input className="imgMain" type="file" onChange={(event) => {
                         setImgMain(event.target.files[0]);
+                        setErrorMsg("");
                     }}/>
 
                     {/* FILE INPUT SECONDARY */}
                     <h2>Upload Secondary Image</h2>
                     <input className="imgSec" type="file" onChange={(event) => {
                         setImgSec(event.target.files[0]);
+                        setErrorMsg("");
                     }}/>
                     
-                    
-                    {/* {isPublishing ? publishing : <button onClick={() => { setIsPublishing(true) }} className="create-button">PUBLISH BLOG</button>} */}
+                    <h2 className="error">{errorMsg}</h2>
+                    <button className="review-button">REVIEW BLOG</button>
                     {isPublishing ? publishing : <button onClick={uploadImages} className="create-button">PUBLISH BLOG</button>}
+                    
                 </div>
                 
             </div>
-            <div className="create-titlebox">
-                <div className="create-title">
-                    <h1>HERE IS A PREVIEW OF YOUR BLOG</h1>
-                    <p>Be aware that pictures you uploaded are going to appear in the gray blocks.
-                        Moreover, date is just an example. It will show today's date when published.
-                        If you found a format like "xxx x xxx" that means you forgot to fill out that form.
-                    </p>
-                </div>
+            <div className="review">
+                        {/* <BlogPrev title={title} name={name} desc={desc} editor1={editor1} editor2={editor2} imgMain={imgMain} imgSec={imgSec}/> */}
+                        {/* <button>cancel</button> */}
+
+                    {/* <CardPrev title={title} name={name} desc={desc}/> */}
             </div>
-            <BlogPrev title={title} name={name} desc={desc} content={content} content2={content2} imgMain={imgMain} imgSec={imgSec}/>
-            <div className="create-titlebox">
-                <div className="create-title">
-                    <h1>PREVIEW OF YOUR BLOG HOME CARDS</h1>
-                    <p>These cards only appear on the homepage.
-                        Make sure everything fits nicely (title and short description).
-                        When done you are ready to publish your blog.
-                    </p>
-                </div>
-            </div>
+            
         </div>
     )
 }

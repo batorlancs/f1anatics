@@ -90,6 +90,7 @@
 .blog-secimg {
     width: 120%;
     filter: brightness(75%);
+    margin: 0;
 }
 
 /* BLOG PREV FOR CREATE PAGE */
@@ -114,4 +115,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.blog-editor {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    margin-inline: 20%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-editor > * {
+    margin-bottom: 50px;
 }

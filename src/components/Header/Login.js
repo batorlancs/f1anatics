@@ -1,22 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { auth, providerGoogle } from "../../Firebase";
-import { signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import Header from "./Header";
+import GoogleLogo from "../../pic/google.png";
 
 function Login() {
 
-    function logOut() {
-        signOut(auth).then(() => {
-            window.location.reload(false);
-            console.log("signed out successfully");
-          }).catch((error) => {
-            console.log("error signing out");
-          });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(auth.currentUser);
+        if (auth.currentUser) navigate("/");
+    }, [auth.currentUser])
+
+    console.log(auth.currentUser);
+
+    function signIn() {
+
+        if (email === "" || password === "") {
+            setErrorMsg("please fill out all forms");
+            return;
+        }
+
+        if ( !(/\S+@\S+\.\S+/.test(email)) ) {
+            setErrorMsg("email is not valid");
+            return;
+        }
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                setErrorMsg("login was unsuccessful");
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode + " " + errorMessage);
+            });
     }
 
     function signInGoogle() {
         signInWithPopup(auth, providerGoogle)
         .then((result) => {
-            window.location.reload(false);
+            navigate("/");
+            window.location.reload();
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
@@ -24,6 +59,7 @@ function Login() {
             const user = result.user;
             // ...
         }).catch((error) => {
+            setErrorMsg("google sign in was unsuccessful");
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -36,16 +72,35 @@ function Login() {
     }
 
     return (
-        <div className="login">
-            <h1>Login or Sign up</h1>
-            <button onClick={signInGoogle}>Sign in with google</button>
-            <br/>
-            <br/>
-            <input placeholder="email" type="text" />
-            <input placeholder="password" type="text" />
-            {auth.currentUser && <h1>you are logged in {auth.currentUser.uid}</h1>}
-            <button>Submit</button>
-            <button onClick={logOut}>Sign out</button>
+        <div className="loginpage">
+            <Header />
+            <div className="login">
+                <div className="login-box1">
+                    <h1>User Login</h1>
+                </div>
+                <div className="login-box2">
+                    <button className="login-google" onClick={signInGoogle}>
+                        <img className="login-googlelogo" src={GoogleLogo}></img>
+                        <span>Continue with Google</span>
+                    </button>
+                    <h3>or with your account</h3>
+                    <input placeholder="email" type="email" onChange={(event) => {
+                        setEmail(event.target.value);
+                        setErrorMsg("");
+                    }}/>
+                    <input placeholder="password" type="password" onChange={(event) => {
+                        setPassword(event.target.value);
+                        setErrorMsg("");
+                    }}/>
+                    { errorMsg !== "" && <h4><span>{errorMsg}</span></h4>}
+                    <button className="login-button" onClick={signIn}>Login</button>
+                    <h4>Not a member yet?</h4>
+                    <button className="signup-button" onClick={() => {
+                        navigate("/signup");
+                    }}>Sign up with a new account</button>
+                </div>
+            </div>
+            <div className="loginback"></div>
         </div>
     )
 }

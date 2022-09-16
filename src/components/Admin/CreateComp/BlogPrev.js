@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "react-uuid";
 import "../../Blog.css";
 
 function BlogPrev(props) {
@@ -16,31 +17,17 @@ function BlogPrev(props) {
                 </div>
             </div>
             <div className="blog-contentbox">
-                {/* <div className="blog-content">{props.content.split("\n").map((par) => {
-                    return (
-                        <div className="blog-text">
-                            <p>{par}</p>
-                            <br></br>
-                        </div>    
-                    )
-                })}</div> */}
-                <div className="blog-content">{props.content === "" ? blankText : props.content.split("\n").map((par) => {
-                    return (
-                        <div className="blog-text">
-                            <p>{par}</p>
-                            <br></br>
-                        </div>    
-                    )
-                })}</div>
+
+                { props.editor1 ? 
+                <div className="blog-editor" dangerouslySetInnerHTML={{__html: props.editor1}}></div> :
+                blankText }
+                
                 <div className="blogprev-secimgbox"></div>
-                <div className="blog-content">{props.content2 === "" ? blankText : props.content2.split("\n").map((par) => {
-                    return (
-                        <div className="blog-text">
-                            <p>{par}</p>
-                            <br></br>
-                        </div>
-                    )
-                })}</div>
+
+                { props.editor2 ? 
+                <div className="blog-editor" dangerouslySetInnerHTML={{__html: props.editor2}}></div> :
+                blankText }
+
                 <h2 className="blog-name"><span>written by </span>{props.name === "" ? blankName : props.name}</h2>
             </div>
             
