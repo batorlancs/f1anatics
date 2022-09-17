@@ -1,9 +1,6 @@
 .hero {
     background-color: white;
-    /* overflow: hidden; */
 }
-
-
 
 .hero-box {
     margin-top: 120px;
@@ -89,3 +86,51 @@
     font-size: 20px;
 }
 
+@media only screen and (max-width: 1050px) {
+    .hero-title {
+        font-size: 40px;
+    }
+
+    .hero-pic2box {
+        width: 0;
+        height: 0;
+    }
+
+    .hero-pic1 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .hero-title {
+        font-size: 35px;
+    }
+    .hero-buttondesc {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    .hero-picbox {
+        margin-left: 0;
+    }
+
+    .hero-buttondesc {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    .hero-box {
+        flex-direction: column;
+    }
+
+    .hero-box-cont {
+        margin-left: 0;
+    }
+
+    .hero-desc {
+        margin-top: 10px;
+    }
+}

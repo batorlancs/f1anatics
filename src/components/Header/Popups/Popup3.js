@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../../../Firebase";
-import { reauthenticateWithCredential, sendPasswordResetEmail } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 function Popup3(props) {
 

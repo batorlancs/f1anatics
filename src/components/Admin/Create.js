@@ -4,8 +4,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 import BlogPrev from "./CreateComp/BlogPrev";
 import CardPrev from "./CreateComp/CardPrev";
 import "./Create.css";
@@ -17,13 +16,11 @@ function Create(props) {
     const [title, setTitle] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
-    // const [content, setContent] = useState("");
-    // const [content2, setContent2] = useState("");
 
     const [editor1, setEditor1] = useState(null);
     const [editor2, setEditor2] = useState(null);
 
-    // console.log(editor1);
+    const [poppedUp, setPoppedUp] = useState(false);
 
     function toggleEditor1(props) {
         setEditor1(props);
@@ -114,7 +111,7 @@ function Create(props) {
         <div className="createpage">
             <div className="create-titlebox">
                 <div className="create-title">
-                    <h1>ADMIN BLOG CREATE</h1>
+                    <h1><Link className="create-titlelink" to="/admin">ADMIN</Link> BLOG CREATE</h1>
                     <p>Make sure the pictures uploaded are 1920x1080 for good quality.</p>
                 </div>
             </div>
@@ -164,18 +161,26 @@ function Create(props) {
                     }}/>
                     
                     <h2 className="error">{errorMsg}</h2>
-                    <button className="review-button">REVIEW BLOG</button>
+                    <button className="review-button" onClick={() => {
+                        setPoppedUp(true);
+                    }}>REVIEW BLOG</button>
                     {isPublishing ? publishing : <button onClick={uploadImages} className="create-button">PUBLISH BLOG</button>}
                     
                 </div>
                 
             </div>
-            <div className="review">
-                        {/* <BlogPrev title={title} name={name} desc={desc} editor1={editor1} editor2={editor2} imgMain={imgMain} imgSec={imgSec}/> */}
-                        {/* <button>cancel</button> */}
 
-                    {/* <CardPrev title={title} name={name} desc={desc}/> */}
-            </div>
+            { poppedUp && <div className="review-page">
+                <div className="review">
+                    <BlogPrev title={title} name={name} desc={desc} editor1={editor1} editor2={editor2} imgMain={imgMain} imgSec={imgSec}/>
+                    <h1>BLOG CARDS ON THE HOME PAGE</h1>
+                    <CardPrev title={title} name={name} desc={desc}/>
+                    <button className="reviewpage-button" onClick={() => {
+                        setPoppedUp(false);
+                    }}>GO BACK</button>
+                </div>
+                <div className="popup-back"></div>
+            </div> }
             
         </div>
     )

@@ -3,8 +3,7 @@ import { auth, providerGoogle } from "../../Firebase";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import Header from "./Header";
-import Footer from "../Footer/Footer";
+
 import Popup3 from "./Popups/Popup3";
 import GoogleLogo from "../../pic/google.png";
 

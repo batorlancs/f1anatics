@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { doc, deleteDoc } from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
 import { db , storage } from "../../Firebase";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import "./Delete.css";
 
 function Delete(props) {
@@ -56,7 +54,7 @@ function Delete(props) {
         <div className="delete">
             <div className="delete-titlebox">
                 <div className="delete-title">
-                    <h1>ADMIN BLOG DELETE</h1>
+                    <h1><Link className="delete-titlelink" to="/admin">ADMIN</Link> BLOG DELETE</h1>
                     <p>Here you can delete any blogs in the database. Deleted blogs will be gone forever.</p>
                 </div>
             </div>

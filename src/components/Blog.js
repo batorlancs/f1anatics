@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Blog.css";
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
 
 function Blog(props) {
 

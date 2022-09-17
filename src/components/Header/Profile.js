@@ -7,8 +7,6 @@ import "./Profile.css";
 
 import Popup from './Popups/Popup';
 import Popup2 from './Popups/Popup2';
-import Header from './Header';
-import Footer from '../Footer/Footer';
 import EditIcon from "../../pic/editicon.svg";
 import Loading from "../../pic/publishing.svg";
 
@@ -74,7 +72,7 @@ function Profile() {
             { auth.currentUser && 
             <div className="profile">
                 <div className="profile-title">
-                    <h1>Profile<br/>Info</h1>
+                    <h1>Profile Info</h1>
                 </div>
                 <div className="profile-content">
                     <h1>Your details</h1>
@@ -89,7 +87,7 @@ function Profile() {
                         <h2 className="red">not verified</h2> }
                     </div>
                     <div className="profile-content-row">
-                        <h2>displayed name:</h2>
+                        <h2>name:</h2>
                         <h3>{auth.currentUser.displayName}</h3>
                         <button className="profile-button2" onClick={togglePopup}><img src={EditIcon}></img></button><br/>
                     </div>

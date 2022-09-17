@@ -19,17 +19,6 @@ function CardPrev(props) {
                     </div>
                 </div>
             </div>
-            <div className="bloglist-cont-box">
-                <div className="bloglist-cont-horz-even">
-                    <div className="bloglist-cont-vert-even">
-                        <h2 className="bloglist-cont-title">{props.title === "" ? blankTitle : props.title}</h2>
-                        <p className="bloglist-cont-desc">{props.desc === "" ? blankDesc : props.desc}</p>
-                        <button className="bloglist-cont-button">read more</button>
-                    </div>
-                    <div className="bloglist-cont-picbox-prev">
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }

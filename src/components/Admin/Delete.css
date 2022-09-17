@@ -20,6 +20,23 @@
     font-size: 45px;
 }
 
+.delete-titlelink:link {
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.4s;
+}
+
+.delete-titlelink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.delete-titlelink:hover {
+    text-decoration: none;
+    color: black;
+    opacity: 50%;
+}
+
 .delete-title > p {
     margin: 0;
     font-size: 18px;

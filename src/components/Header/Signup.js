@@ -3,8 +3,6 @@ import { auth } from "../../Firebase";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import Header from "./Header";
-import Footer from "../Footer/Footer";
 
 function Signup() {
 
@@ -72,8 +70,8 @@ function Signup() {
                     <h1>User Sign Up</h1>
                 </div>
                 <div className="login-box2">
-                    <h2>Welcome<br/>to the community!</h2>
-                    <h3>Sign Up with a new account</h3>
+                    <h2>Welcome<br/>to the F1 community!</h2>
+                    <h3>Sign up with a new account</h3>
                     <input placeholder="email" type="email" onChange={(event) => {
                         setEmail(event.target.value);
                         setErrorMsg("");

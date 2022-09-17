@@ -130,6 +130,7 @@
 .signup-button {
     padding: 0;
     text-decoration: none;
+    text-align: left;
     background-color: inherit;
     border: none;
     font-family: 'Montserrat', sans-serif;
@@ -163,4 +164,24 @@
 
 .signup-button:hover {
     color: #5941F2;
+}
+
+@media only screen and (max-width: 880px) {
+    .login-box1 {
+        width: 100%;
+    }
+    .login-box2 {
+        width: 100%;
+    }
+    .login {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .login {
+        margin-inline: 5%;
+        width: 100%;
+    }
 }
