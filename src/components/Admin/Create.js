@@ -111,77 +111,73 @@ function Create(props) {
     };
 
     return (
-        <>
-            <div className="createpage">
-                <Header />
-                <div className="create-titlebox">
-                    <div className="create-title">
-                        <h1>ADMIN BLOG CREATE</h1>
-                        <p>Make sure the pictures uploaded are 1920x1080 for good quality.</p>
-                    </div>
+        <div className="createpage">
+            <div className="create-titlebox">
+                <div className="create-title">
+                    <h1>ADMIN BLOG CREATE</h1>
+                    <p>Make sure the pictures uploaded are 1920x1080 for good quality.</p>
                 </div>
-                <div className="create">
+            </div>
+            <div className="create">
 
-                    <div className="create-form">
+                <div className="create-form">
 
-                        {/* TITLE */}
-                        <h2>Insert Title</h2>
-                        <textarea className="title" onChange={(event) => {
-                            setTitle(event.target.value);
-                            setErrorMsg("");
-                        }} placeholder="title..." maxLength="74"/>
+                    {/* TITLE */}
+                    <h2>Insert Title</h2>
+                    <textarea className="title" onChange={(event) => {
+                        setTitle(event.target.value);
+                        setErrorMsg("");
+                    }} placeholder="title..." maxLength="74"/>
 
-                        {/* NAME */}
-                        <h2>Insert Your Name</h2>
-                        <textarea className="name" onChange={(event) => {
-                            setName(event.target.value);
-                            setErrorMsg("");
-                        }} placeholder="name..." maxLength="50"/>
+                    {/* NAME */}
+                    <h2>Insert Your Name</h2>
+                    <textarea className="name" onChange={(event) => {
+                        setName(event.target.value);
+                        setErrorMsg("");
+                    }} placeholder="name..." maxLength="50"/>
 
-                        {/* DESC */}
-                        <h2>Insert Short Description</h2>
-                        <textarea className="desc" onChange={(event) => {
-                            setDesc(event.target.value);
-                            setErrorMsg("");
-                        }} placeholder="desc..." maxLength="130"/>
+                    {/* DESC */}
+                    <h2>Insert Short Description</h2>
+                    <textarea className="desc" onChange={(event) => {
+                        setDesc(event.target.value);
+                        setErrorMsg("");
+                    }} placeholder="desc..." maxLength="130"/>
 
-                        <h2>Insert Content</h2>
-                        <TextEditor toggleEditor={toggleEditor1}/>
-                        <h2>Insert Content After The Picture</h2>
-                        <TextEditor toggleEditor={toggleEditor2}/>
+                    <h2>Insert Content</h2>
+                    <TextEditor toggleEditor={toggleEditor1}/>
+                    <h2>Insert Content After The Picture</h2>
+                    <TextEditor toggleEditor={toggleEditor2}/>
 
 
-                        {/* FILE INPUT MAIN */}
-                        <h2>Upload Main Image</h2>
-                        <input className="imgMain" type="file" onChange={(event) => {
-                            setImgMain(event.target.files[0]);
-                            setErrorMsg("");
-                        }}/>
+                    {/* FILE INPUT MAIN */}
+                    <h2>Upload Main Image</h2>
+                    <input className="imgMain" type="file" onChange={(event) => {
+                        setImgMain(event.target.files[0]);
+                        setErrorMsg("");
+                    }}/>
 
-                        {/* FILE INPUT SECONDARY */}
-                        <h2>Upload Secondary Image</h2>
-                        <input className="imgSec" type="file" onChange={(event) => {
-                            setImgSec(event.target.files[0]);
-                            setErrorMsg("");
-                        }}/>
-                        
-                        <h2 className="error">{errorMsg}</h2>
-                        <button className="review-button">REVIEW BLOG</button>
-                        {isPublishing ? publishing : <button onClick={uploadImages} className="create-button">PUBLISH BLOG</button>}
-                        
-                    </div>
+                    {/* FILE INPUT SECONDARY */}
+                    <h2>Upload Secondary Image</h2>
+                    <input className="imgSec" type="file" onChange={(event) => {
+                        setImgSec(event.target.files[0]);
+                        setErrorMsg("");
+                    }}/>
                     
-                </div>
-                <div className="review">
-                            {/* <BlogPrev title={title} name={name} desc={desc} editor1={editor1} editor2={editor2} imgMain={imgMain} imgSec={imgSec}/> */}
-                            {/* <button>cancel</button> */}
-
-                        {/* <CardPrev title={title} name={name} desc={desc}/> */}
+                    <h2 className="error">{errorMsg}</h2>
+                    <button className="review-button">REVIEW BLOG</button>
+                    {isPublishing ? publishing : <button onClick={uploadImages} className="create-button">PUBLISH BLOG</button>}
+                    
                 </div>
                 
             </div>
-            <Footer />
-        </>
+            <div className="review">
+                        {/* <BlogPrev title={title} name={name} desc={desc} editor1={editor1} editor2={editor2} imgMain={imgMain} imgSec={imgSec}/> */}
+                        {/* <button>cancel</button> */}
+
+                    {/* <CardPrev title={title} name={name} desc={desc}/> */}
+            </div>
+            
+        </div>
     )
 }
 

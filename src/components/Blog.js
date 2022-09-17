@@ -9,7 +9,6 @@ function Blog(props) {
 
     return (
         <div className="blog">
-            <Header />
             <div className="blog-mainimgbox">
                 <div className="blog-mainimgbox-cont">
                     <h1 className="blog-title">{blogdata.title}</h1>
@@ -31,7 +30,6 @@ function Blog(props) {
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }
                 <h2 className="blog-name"><span>written by </span>{blogdata.name}</h2>
             </div>
-            <Footer />
         </div>
     )
 }

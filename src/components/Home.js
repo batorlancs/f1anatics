@@ -20,11 +20,9 @@ function Home(props) {
 
     return (
         <div>
-            <Header />
             {blogs.length > 0 && <Hero blogs={blogs} blogNumber={blogNumber} navigateToHeroBlog={navigateToHeroBlog}/>}
             {blogs.length > 0 && <BlogList blogs={blogs}/>}
             {/* <About /> */}
-            <Footer />
         </div>
     )
 }

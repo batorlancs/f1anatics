@@ -13,6 +13,9 @@ import Signup from "./components/Header/Signup";
 import Profile from "./components/Header/Profile";
 import Admin from "./components/Admin/Admin";
 import Delete from "./components/Admin/Delete.js";
+import ScrollToTop from "./components/ScrollToTop";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -43,6 +46,8 @@ function App() {
 
     return (
         <Router>
+            <Header />
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
                 {checkIfAdmin() && <Route path="/admin" element={<Admin />}></Route>}
@@ -57,6 +62,7 @@ function App() {
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
             </Routes>
+            <Footer />
         </Router>
     )
 }

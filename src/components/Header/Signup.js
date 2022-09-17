@@ -66,35 +66,32 @@ function Signup() {
     }
 
     return (
-        <>
-            <div className="loginpage">
-                <Header />
-                <div className="login">
-                    <div className="login-box1">
-                        <h1>User Sign Up</h1>
-                    </div>
-                    <div className="login-box2">
-                        <h3>Sign Up with a new account</h3>
-                        <input placeholder="email" type="email" onChange={(event) => {
-                            setEmail(event.target.value);
-                            setErrorMsg("");
-                        }}/>
-                        <input placeholder="password" type="password" onChange={(event) => {
-                            setPassword(event.target.value);
-                            setErrorMsg("");
-                        }}/>
-                        <input placeholder="confirm password" type="password" onChange={(event) => {
-                            setConfPassword(event.target.value);
-                            setErrorMsg("");
-                        }}/>
-                        { errorMsg !== "" && <h4><span>{errorMsg}</span></h4>}
-                        <button onClick={createAccount} className="login-button">Sign Up</button>
-                    </div>
+        <div className="loginpage">
+            <div className="login">
+                <div className="login-box1">
+                    <h1>User Sign Up</h1>
                 </div>
-                <div className="loginback"></div>
+                <div className="login-box2">
+                    <h2>Welcome<br/>to the community!</h2>
+                    <h3>Sign Up with a new account</h3>
+                    <input placeholder="email" type="email" onChange={(event) => {
+                        setEmail(event.target.value);
+                        setErrorMsg("");
+                    }}/>
+                    <input placeholder="password" type="password" onChange={(event) => {
+                        setPassword(event.target.value);
+                        setErrorMsg("");
+                    }}/>
+                    <input placeholder="confirm password" type="password" onChange={(event) => {
+                        setConfPassword(event.target.value);
+                        setErrorMsg("");
+                    }}/>
+                    { errorMsg !== "" && <h4><span>{errorMsg}</span></h4>}
+                    <button onClick={createAccount} className="login-button">Sign Up</button>
+                </div>
             </div>
-            <Footer />
-        </>
+            <div className="loginback"></div>
+        </div>
     )
 }
 

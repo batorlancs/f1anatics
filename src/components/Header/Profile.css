@@ -106,3 +106,90 @@
 .profile-button2:hover {
     opacity: 100%;
 }
+
+.profile-button3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-inline: 20px;
+    border: 1px solid black;
+    background-color: inherit;
+    padding: 8px;
+    padding-inline: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.profile-button3:hover {
+    background-color: black;
+    color: white;
+}
+
+.profile-popup-page {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.profile-popup-back {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+    z-index: 1;
+}
+
+.profile-popup {
+    padding: 20px;
+    height: 300px;
+    width: 100%;
+    max-width: 600px;
+    margin-inline: 5%;
+    background-color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-popup > input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px;
+    min-width: 300px;
+    text-align: center;
+}
+
+.profile-popup > h1 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.profile-popup > h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.profile-popup > p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.profile-loading {
+    height: 30px;
+}
