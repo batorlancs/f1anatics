@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Blog.css";
 
 function Blog(props) {
 
-    const {blogid, blogdata} = props;
+    const {blogdata} = props;
 
     return (
         <div className="blog">
@@ -16,13 +16,13 @@ function Blog(props) {
                         {blogdata.date.day > 10 ? blogdata.date.day : `0${blogdata.date.day}`}.
                     </h3>
                 </div>
-                <img className="blog-mainimg" src={blogdata.mainImg}></img>
+                <img className="blog-mainimg" src={blogdata.mainImg} alt="blog_main_image"></img>
             </div>
             <div className="blog-contentbox">
                 { blogdata.content &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content}}></div> }
                 <div className="blog-secimgbox">
-                    <img className="blog-secimg" src={blogdata.secImg}></img>
+                    <img className="blog-secimg" src={blogdata.secImg} alt="blog_secondary_image"></img>
                 </div>
                 { blogdata.content2 &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }

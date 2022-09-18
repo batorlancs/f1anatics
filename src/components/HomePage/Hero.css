@@ -38,7 +38,7 @@
 .hero-button {
     height: 50px;
     width: 180px;
-    border: none;
+    border: 1.5px solid #5941F2;
     background-color: #5941F2;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -49,7 +49,6 @@
 }
 
 .hero-button:hover {
-    border: 1.5px solid #5941F2;
     color: #5941F2;
     background-color: inherit;
 }
@@ -131,26 +130,14 @@
     .hero-picbox {
         margin-left: 0;
     }
-
-    
-
-    
-
-    
-
     .hero-desc {
         margin-top: 15px;
+        margin-inline: 5%;
     }
-}
-
-
-@media only screen and (max-width: 400px) {
     .hero-box {
         margin-inline: 5%;
     }
-    .hero-desc {
-        margin-inline: 5%;
-    }
+
     .hero-picbox {
         margin-left: 0;
         height: 250px;

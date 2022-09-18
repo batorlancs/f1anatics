@@ -64,7 +64,7 @@
     margin-top: 20px;
     height: 50px;
     width: 180px;
-    border: none;
+    border: 1.5px solid #5941F2;
     background-color: #5941F2;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -74,7 +74,6 @@
 }
 
 .bloglist-cont-button:hover {
-    border: 2px solid #5941F2;
     color: #5941F2;
     background-color: inherit;
 }
@@ -118,15 +117,10 @@
     }
 
     .bloglist-cont-title {
-        font-size: 25px;
+        font-size: 20px;
     }
 
-    .bloglist-cont-desc {
-        margin: 0;
-        height: 0;
-        width: 0;
-        visibility: hidden;
-    }
+    
 
     .bloglist-cont-button {
         margin-top: 20px;
@@ -134,10 +128,12 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .bloglist-cont-title {
-        font-size: 20px;
+    .bloglist-cont-desc {
+        margin: 0;
+        height: 0;
+        width: 0;
+        visibility: hidden;
     }
-    
 }
 
 @media only screen and (max-width: 750px) {
@@ -168,11 +164,10 @@
         padding-inline: 25px;
         padding-block: 25px;
         width: 100%;
-        min-height: 250px;
-        /* padding-right: 60px; */
+        min-height: 0px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .bloglist-cont-button {
@@ -206,9 +201,6 @@
         flex-direction: column;
         justify-content: center;
     }
-}
-
-@media only screen and (max-width: 400px) {
     .bloglist-cont-box {
         margin-inline: 5%;
     }

@@ -28,8 +28,8 @@ function Header() {
                 <button className="header-button1" onClick={() => (navigate("/login"))}>login</button> }
             </div>
             {   !dropDown ?
-                <button className="header-button2" onClick={toggleDrop}><img src={MenuIcon}></img></button> :
-                <button className="header-button2" onClick={toggleDrop}><img src={CloseIcon}></img></button>
+                <button className="header-button2" onClick={toggleDrop}><img src={MenuIcon} alt="menu_icon"></img></button> :
+                <button className="header-button2" onClick={toggleDrop}><img src={CloseIcon} alt="menu_close_icon"></img></button>
             }
 
         </div>

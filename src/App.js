@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { getDocs, addDoc, collection } from "firebase/firestore";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { getDocs, collection } from "firebase/firestore";
 import { db, auth } from "./Firebase";
 
 import Admins from "./admin/admins.json";
@@ -53,9 +53,9 @@ function App() {
                 {checkIfAdmin() && <Route path="/admin" element={<Admin />}></Route>}
                 {checkIfAdmin() && <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>}
                 {checkIfAdmin() && <Route path="/admin/delete" element={<Delete blogs={blogList} />}></Route>}
-                {blogList.map((blog) => {;
+                {blogList.map((blog) => {
                     return (
-                        <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogid={blog.id} blogdata={blog}/>}></Route>
+                        <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogdata={blog}/>}></Route>
                     )
                 })}
                 <Route path="/login" element={<Login />}></Route>

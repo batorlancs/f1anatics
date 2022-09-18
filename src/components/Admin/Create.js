@@ -35,7 +35,7 @@ function Create(props) {
 
     const [isPublishing, setIsPublishing] = useState(false);
     const publishing = <div className="publishing">
-                            <img className="publishing-img" src={Publishing}></img>
+                            <img className="publishing-img" src={Publishing} alt="publishing-icon"></img>
                             <h4>publishing...</h4>
                         </div>;
 
@@ -104,7 +104,7 @@ function Create(props) {
             }
         });
         navigate("/");
-        props.incBlogNumber();
+        window.location.reload(false);
     };
 
     return (

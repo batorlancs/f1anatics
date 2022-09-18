@@ -60,10 +60,10 @@ function Footer() {
             <hr/>
             <div className="footer-socials">
                 <div className="footer-socialsbox">
-                    <a href="https://www.youtube.com/">{<img src={Youtube}></img>}</a>
-                    <a href="https://www.instagram.com/"><img src={Instagram}></img></a>
-                    <a href="https://www.facebook.com/"><img src={Facebook}></img></a>
-                    <a href="https://www.twitter.com/"><img src={Twitter}></img></a>
+                    <a href="https://www.youtube.com/">{<img src={Youtube} alt="youtube_icon"></img>}</a>
+                    <a href="https://www.instagram.com/"><img src={Instagram} alt="instagram_icon"></img></a>
+                    <a href="https://www.facebook.com/"><img src={Facebook} alt="facebook_icon"></img></a>
+                    <a href="https://www.twitter.com/"><img src={Twitter} alt="twitter_icon"></img></a>
                 </div>
                 <div className="footer-copyright">
                     <p>Check out our social media accounts for more!</p>

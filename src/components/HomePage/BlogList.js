@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate } from "react-router-dom";
-import HeroPic from "../../pic/hero.jpg";
 import "./BlogList.css";
 
 
@@ -22,7 +21,7 @@ function BlogList(props) {
                         <div className="bloglist-cont-box" key={blog.id}>
                             <div className="bloglist-cont-horz">
                                 <div className="bloglist-cont-picbox">
-                                    <img className="bloglist-cont-pic" src={blog.mainImg}></img>
+                                    <img className="bloglist-cont-pic" src={blog.mainImg} alt="blog_card_image"></img>
                                 </div>
                                 <div className="bloglist-cont-vert">
                                     <h2 className="bloglist-cont-title">{blog.title}</h2>

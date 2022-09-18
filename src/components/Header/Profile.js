@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { auth } from "../../Firebase";
 import { signOut, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 
@@ -44,8 +44,8 @@ function Profile() {
 
     function logOut() {
         signOut(auth).then(() => {
-            navigate("/");
             window.location.reload();
+            navigate("/");
             console.log("signed out successfully");
           }).catch((error) => {
             console.log("error signing out");
@@ -89,7 +89,7 @@ function Profile() {
                     <div className="profile-content-row">
                         <h2>name:</h2>
                         <h3>{auth.currentUser.displayName}</h3>
-                        <button className="profile-button2" onClick={togglePopup}><img src={EditIcon}></img></button><br/>
+                        <button className="profile-button2" onClick={togglePopup}><img src={EditIcon} alt="edit_icon"></img></button><br/>
                     </div>
                     <button className="profile-button1" onClick={logOut}>sign out</button>
                     <h1 className="profile-options">Other options</h1>
@@ -97,7 +97,7 @@ function Profile() {
 
                     <button className="profile-button1" onClick={sendPasswordReset}>send reset your password email</button><br/>
                     <button className="profile-button1" onClick={togglePopup2}>delete your account</button><br/>
-                    { loading && <img src={Loading} className="profile-loading"></img>}
+                    { loading && <img src={Loading} className="profile-loading" alt="loading_icon"></img>}
                     { msg !== "" && <p className="green">{msg}</p>}
                 </div>
             </div> }    

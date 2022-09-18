@@ -48,9 +48,9 @@ function Hero(props)  {
                 </div>
             </div>
             <div className="hero-picbox">
-                <img className="hero-pic1" src={heroBlog.mainImg}></img>
+                <img className="hero-pic1" src={heroBlog.mainImg} alt="hero_main_image"></img>
                 <div className="hero-pic2box">
-                    <img className="hero-pic2" src={heroBlog.secImg}></img>
+                    <img className="hero-pic2" src={heroBlog.secImg} alt="hero_secondary_image"></img>
                 </div>
             </div>
             
