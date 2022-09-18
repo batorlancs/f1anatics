@@ -66,9 +66,9 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     margin-top: 15px;
+    max-width: 400px;
     border: none;
     padding: 8px;
-    min-width: 300px;
     width: 100%;
 }
 
@@ -119,6 +119,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding-inline: 15%;
 }
 
 .footer-link {
@@ -173,5 +175,11 @@
     }
     .columntype4 {
         flex: 0 0 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .footer-grid {
+        margin-inline: 5%;
     }
 }

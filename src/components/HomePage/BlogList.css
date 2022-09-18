@@ -198,13 +198,18 @@
 
     .bloglist-cont-picbox {
         width: 100%;
+        min-width: 0px;
     }
     .bloglist-cont-vert {
         margin: 0;
-        /* min-height: 250px; */
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+}
 
+@media only screen and (max-width: 400px) {
+    .bloglist-cont-box {
+        margin-inline: 5%;
+    }
 }

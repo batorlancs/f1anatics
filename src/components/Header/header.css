@@ -9,6 +9,7 @@
     width: 100%;
     position: fixed;
     z-index: 5;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .header-logo {
@@ -71,15 +72,13 @@
 }
 
 .header-button2 > img {
-    height: 45px;
+    height: 35px;
 
 }
 
 .header-button2 {
     margin-right: 10%;
     padding: 0;
-    height: 50px;
-    width: 50px;
     opacity: 0%;
     display: none;
     cursor: pointer;
@@ -206,5 +205,25 @@
 
     .drop-link {
         padding-right: 16%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .header {
+        height: 70px;
+    }
+    .header-logo {
+        margin-left: 5%;
+        font-size: 25px;
+    }
+    .header-button2 {
+        margin-right: 5%;
+    }
+    .drop {
+        padding-top: 70px;
+    }
+    .drop-link {
+        padding-block: 15px;
+        padding-right: 8%;
     }
 }

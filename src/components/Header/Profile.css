@@ -87,6 +87,7 @@
     transition-duration: 0.4s;
     margin-bottom: 10px;
     cursor: pointer;
+    text-align: left;
 }
 .profile-button1:hover {
     opacity: 100%;
@@ -202,6 +203,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
+    
 }
 
 @media only screen and (max-width: 600px) {
@@ -209,4 +211,29 @@
         margin-inline: 5%;
         width: 100%;
     }
+    .profile-content-row > h2, .profile-content-row > h3 {
+        font-size: 15px;
+    }
+    .profile-button1 {
+        font-size: 15px;
+    }
+    .profile-content > h1 {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .profile {
+        /* margin-inline: 10%; */
+        width: 90%;
+    }
+    .profile-content-row {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    
 }
