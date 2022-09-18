@@ -62,7 +62,7 @@ function App() {
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
             </Routes>
-            <Footer />
+            {blogList.length > 0 && <Footer />}
         </Router>
     )
 }

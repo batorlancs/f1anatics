@@ -2,6 +2,7 @@ import React from "react";
 import { analytics } from "../Firebase";
 import { logEvent } from "firebase/analytics";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer/Footer";
 import BlogList from "./HomePage/BlogList";
 import Hero from "./HomePage/Hero";
 function Home(props) {
