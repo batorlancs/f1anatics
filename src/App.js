@@ -14,6 +14,7 @@ import Profile from "./components/Header/Profile";
 import Admin from "./components/Admin/Admin";
 import Delete from "./components/Admin/Delete.js";
 import ScrollToTop from "./components/ScrollToTop";
+import Page404 from "./components/Page404";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -61,6 +62,10 @@ function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
+                <Route path="/404" element={<Page404 />}></Route>
+                <Route path="*" element={<Page404 />} />
+                <Route path="" element={<Page404 />} />
+                <Route  element={<Page404 />} />
             </Routes>
             {blogList.length > 0 && <Footer />}
         </Router>

@@ -25,6 +25,7 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .bloglist-cont-pic {
@@ -111,7 +112,6 @@
 }
 
 @media only screen and (max-width: 1050px) {
-
     .bloglist-cont-box {
         background-color: whitesmoke;
     }
@@ -119,8 +119,6 @@
     .bloglist-cont-title {
         font-size: 20px;
     }
-
-    
 
     .bloglist-cont-button {
         margin-top: 20px;
@@ -157,7 +155,7 @@
     }
 
     .bloglist-cont-pic {
-        height: 130%;
+        height: 140%;
     }
     .bloglist-cont-vert {
         margin: 0;
@@ -192,6 +190,7 @@
     }
 
     .bloglist-cont-picbox {
+        height: 200px;
         width: 100%;
         min-width: 0px;
     }
