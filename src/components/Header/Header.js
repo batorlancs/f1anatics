@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import MenuIcon from "../../pic/menuicon.svg";
 import CloseIcon from "../../pic/closeicon.svg";
+import Logo from "../../pic/fanaticlogo.png";
 
 function Header() {
 
@@ -17,7 +18,8 @@ function Header() {
     return (
         <>
         <div className="header">
-            <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button>
+            {/* <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button> */}
+            <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button>
             <div className="header-box">
                 <button className="header-button1" onClick={() => (navigate("/"))}>blogs</button>
                 <button className="header-button1" onClick={() => (navigate("/"))}>drivers</button>

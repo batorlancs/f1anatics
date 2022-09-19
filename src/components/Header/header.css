@@ -25,6 +25,11 @@
     transition-duration: 0.4s;
 }
 
+.header-logo-img {
+    height: 50px;
+
+}
+
 .header-logo:hover {
     color: #5941F2;
 }

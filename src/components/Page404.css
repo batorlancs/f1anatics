@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
 }
 
 .page404-box {
@@ -53,6 +52,7 @@
 .page404-desc {
     margin: 0;
     font-size: 18px;
+    font-weight: 500;
     margin-bottom: 30px;
 }
 
