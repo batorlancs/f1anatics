@@ -68,6 +68,9 @@ function Delete(props) {
                                     navigate(`/blog/${blog.id}`);
                                 }} className="delete-cont-button1">check blog</button>
                                 <button onClick={() => {
+                                    navigate(`/admin/update/${blog.id}`);
+                                }} className="delete-cont-button3">update blog</button>
+                                <button onClick={() => {
                                     setDeleteBlogId(blog.id);
                                     setDeleteBlogKey(blog.key);
                                 }} className="delete-cont-button2">delete blog</button>

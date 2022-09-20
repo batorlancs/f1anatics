@@ -53,7 +53,12 @@ function App() {
                 <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
                 {checkIfAdmin() && <Route path="/admin" element={<Admin />}></Route>}
                 {checkIfAdmin() && <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>}
-                {checkIfAdmin() && <Route path="/admin/delete" element={<Delete blogs={blogList} />}></Route>}
+                {checkIfAdmin() && <Route path="/admin/delete" element={<Delete blogs={blogList}/>}></Route>}
+                {checkIfAdmin() && blogList.map((blog) => {
+                    return (
+                        <Route key={blog.id} path={`/admin/update/${blog.id}`} element={<Create blogdata={blog}/>}></Route>
+                    )
+                })}
                 {blogList.map((blog) => {
                     return (
                         <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogdata={blog}/>}></Route>

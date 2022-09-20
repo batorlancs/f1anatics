@@ -59,14 +59,15 @@
     margin-top: 15px;
 }
 
-.delete-cont-button1, .delete-cont-button2 {
+.delete-cont-button1, .delete-cont-button2, .delete-cont-button3 {
     font-family: 'Montserrat', sans-serif;
-    border: none;
+    border: 1px solid black;
     color: white;
     padding: 10px;
     cursor: pointer;
     transition-duration: 0.4;
     margin-right: 10px;
+    transition-duration: 0.4s;
 }
 
 .delete-cont-button1 {
@@ -77,8 +78,11 @@
     background-color: rgb(251, 105, 105);
 }
 
-.delete-cont-button1:hover, .delete-cont-button2:hover {
-    border: 1px solid black;
+.delete-cont-button3 {
+    background-color: rgb(47, 147, 184);
+}
+
+.delete-cont-button1:hover, .delete-cont-button2:hover, .delete-cont-button3:hover {
     color: black;
     background-color: inherit;
 }

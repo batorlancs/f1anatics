@@ -71,16 +71,26 @@
     font-size: 14px;
 }
 
-.create input {
-    width: 100%;
-}
-
 .title, .name, .desc {
     height: 50px;
 }
 
 .content, .content2 {
     height: 200px;
+}
+
+.check {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.check > input {
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
 }
 
 .create-button {
@@ -139,6 +149,16 @@
 .publishing > h4 {
     margin-top: 10px;
     font-weight: 400;
+}
+
+.toolbar-class-side {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    max-width: 130px;
 }
 
 .review-page {

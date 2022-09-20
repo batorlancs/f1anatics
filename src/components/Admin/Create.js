@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, doc, setDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
@@ -19,8 +19,11 @@ function Create(props) {
 
     const [editor1, setEditor1] = useState(null);
     const [editor2, setEditor2] = useState(null);
+    const [isSecImg, setIsSecImg] = useState(false);
 
     const [poppedUp, setPoppedUp] = useState(false);
+    const [stick1, setStick1] = useState("");
+    const [stick2, setStick2] = useState("");
 
     function toggleEditor1(props) {
         setEditor1(props);
@@ -44,6 +47,76 @@ function Create(props) {
     const blogsCollection = collection(db, "blogs");
     let navigate = useNavigate();
 
+    useEffect(() => {
+        if (props.blogdata != null) {
+            document.getElementById("title").value = props.blogdata.title;
+            document.getElementById("name").value = props.blogdata.name;
+            document.getElementById("desc").value = props.blogdata.desc;
+            document.getElementById("sec-img-check").checked = props.blogdata.hideSecImg;
+            setIsSecImg(props.blogdata.hideSecImg);
+        } else {
+            console.log("not update");
+        }
+    }, [])
+
+    const updateImages = () => {
+        // set loading animation
+        setIsPublishing(true);
+        if (imgMain != null) {
+            const storageRefMain = ref(storage, `images/${props.blogdata.key}/main.png`);
+            uploadBytes(storageRefMain, imgMain)
+                .then((snapshot) => {
+                    console.log("Main successfully uploaded");
+                    getDownloadURL(storageRefMain)
+                        .then((url1) => {
+                            if (imgSec != null) {
+                                const storageRefSec = ref(storage, `images/${props.blogdata.key}/secondary.png`);
+                                uploadBytes(storageRefSec, imgSec)
+                                .then((snapshot) => {
+                                    console.log("Secondary successfully uploaded");
+                                    getDownloadURL(storageRefSec)
+                                        .then((url2) => {
+                                            updatePost({url1, url2});
+                                        })
+                                })
+                            } else {
+                                let url2 = "";
+                                updatePost({url1, url2})
+                            }
+                        })
+                })
+        } else if (imgSec != null) {
+            const storageRefSec = ref(storage, `images/${props.blogdata.key}/secondary.png`);
+            uploadBytes(storageRefSec, imgSec)
+                .then((snapshot) => {
+                    console.log("Secondary successfully uploaded");
+                    getDownloadURL(storageRefSec)
+                        .then((url2) => {
+                            let url1 = "";
+                            updatePost({url1, url2});
+                        })
+                })
+        } else {
+            let url1 = "";
+            let url2 = "";
+            updatePost({url1, url2});
+        }
+    }
+
+    const updatePost = async ({url1, url2}) => {
+        const updateRef = doc(db, "blogs", props.blogdata.id);
+        if (title !== "") await setDoc(updateRef, { title: title }, { merge: true});
+        if (name !== "") await setDoc(updateRef, { name: name }, { merge: true});
+        if (desc !== "") await setDoc(updateRef, { desc: desc }, { merge: true});
+        if (editor1 !== "") await setDoc(updateRef, { content: editor1 }, { merge: true});
+        if (editor2 !== "") await setDoc(updateRef, { content2: editor2 }, { merge: true});
+        if (url1 !== "") await setDoc(updateRef, { imgMain: url1 }, { merge: true});
+        if (url2 !== "") await setDoc(updateRef, { imgSec: url2 }, { merge: true});
+        await setDoc(updateRef, { hideSecImg: isSecImg }, { merge: true});
+
+        navigate("/");
+        window.location.reload(false);
+    };
 
     const uploadImages = () => {
         // error checking
@@ -72,16 +145,14 @@ function Create(props) {
                 console.log("Main successfully uploaded");
                 getDownloadURL(storageRefMain)
                     .then((url1) => {
-
                         uploadBytes(storageRefSec, imgSec)
-                            .then((snapshot) => {
-                                console.log("Secondary successfully uploaded");
-                                getDownloadURL(storageRefSec)
-                                    .then((url2) => {
-                                        createPost({url1, url2});
-                                    })
-                            })
-
+                        .then((snapshot) => {
+                            console.log("Secondary successfully uploaded");
+                            getDownloadURL(storageRefSec)
+                                .then((url2) => {
+                                    createPost({url1, url2});
+                                })
+                        })
                     })
             })
     }
@@ -101,7 +172,8 @@ function Create(props) {
                 month: (new Date().getMonth() + 1).toString(),
                 day: new Date().getDate().toString(),
                 time: new Date().getTime()
-            }
+            },
+            hideSecImg: isSecImg
         });
         navigate("/");
         window.location.reload(false);
@@ -111,7 +183,7 @@ function Create(props) {
         <div className="createpage">
             <div className="create-titlebox">
                 <div className="create-title">
-                    <h1><Link className="create-titlelink" to="/admin">ADMIN</Link> BLOG CREATE</h1>
+                    <h1><Link className="create-titlelink" to="/admin">ADMIN</Link> BLOG {props.blogdata != null ? "UPDATE" : "BLOG CREATE"}</h1>
                     <p>Make sure the pictures uploaded are 1920x1080 for good quality.</p>
                 </div>
             </div>
@@ -124,27 +196,47 @@ function Create(props) {
                     <textarea className="title" onChange={(event) => {
                         setTitle(event.target.value);
                         setErrorMsg("");
-                    }} placeholder="title..." maxLength="74"/>
+                    }} placeholder="title..." maxLength="74" id="title"/>
 
                     {/* NAME */}
                     <h2>Insert Your Name</h2>
                     <textarea className="name" onChange={(event) => {
                         setName(event.target.value);
                         setErrorMsg("");
-                    }} placeholder="name..." maxLength="50"/>
+                    }} placeholder="name..." maxLength="50" id="name"/>
 
                     {/* DESC */}
                     <h2>Insert Short Description</h2>
                     <textarea className="desc" onChange={(event) => {
                         setDesc(event.target.value);
                         setErrorMsg("");
-                    }} placeholder="desc..." maxLength="130"/>
+                    }} placeholder="desc..." maxLength="130" id="desc"/>
 
                     <h2>Insert Content</h2>
-                    <TextEditor toggleEditor={toggleEditor1}/>
-                    <h2>Insert Content After The Picture</h2>
-                    <TextEditor toggleEditor={toggleEditor2}/>
+                    <div className="check">
+                        <input type="checkbox" id="check-stick1" name="check-stick1" onChange={(event) => {
+                            event.target.checked ? setStick1("-side") : setStick1("");
+                        }}/>
+                        <label hrmlfor="check-stick1">Stick toolbar on the right side panel</label>
+                    </div>
+                    {   props.blogdata != null ?
+                        <TextEditor stick={stick1} toggleEditor={toggleEditor1} content={props.blogdata.content}/> :
+                        <TextEditor stick={stick1} toggleEditor={toggleEditor1}/> 
+                    }
 
+                    <h2>Insert Content After The Picture</h2>
+                    <div className="check">
+                        <input type="checkbox" id="check-stick2" name="check-stick2" onChange={(event) => {
+                            event.target.checked ? setStick2("-side") : setStick2("");
+                        }}/>
+                        <label hrmlfor="check-stick2">Stick toolbar on the right side panel</label>
+                    </div>
+                    {   props.blogdata != null ?
+                        <TextEditor stick={stick2} toggleEditor={toggleEditor2} content={props.blogdata.content2}/> :
+                        <TextEditor stick={stick2} toggleEditor={toggleEditor2}/> 
+                    }
+
+                    { props.blogdata != null && <h1>Only upload images if you want new ones</h1>}
 
                     {/* FILE INPUT MAIN */}
                     <h2>Upload Main Image</h2>
@@ -159,12 +251,21 @@ function Create(props) {
                         setImgSec(event.target.files[0]);
                         setErrorMsg("");
                     }}/>
+
+                    <div className="check">
+                        <input type="checkbox" id="sec-img-check" name="sec-img-check" onChange={(event) => {
+                            setIsSecImg(event.target.checked)
+                        }}/>
+                        <label hrmlfor="sec-img-check">I don't want the secondary image to appear in the blog</label>
+                    </div>
                     
                     <h2 className="error">{errorMsg}</h2>
                     <button className="review-button" onClick={() => {
                         setPoppedUp(true);
                     }}>REVIEW BLOG</button>
-                    {isPublishing ? publishing : <button onClick={uploadImages} className="create-button">PUBLISH BLOG</button>}
+                    {isPublishing ? publishing : <button onClick={() => {
+                        props.blogdata != null ? updateImages() : uploadImages();
+                    }} className="create-button">PUBLISH BLOG</button>}
                     
                 </div>
                 

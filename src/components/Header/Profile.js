@@ -44,8 +44,8 @@ function Profile() {
 
     function logOut() {
         signOut(auth).then(() => {
-            window.location.reload();
             navigate("/");
+            window.location.reload();
             console.log("signed out successfully");
           }).catch((error) => {
             console.log("error signing out");

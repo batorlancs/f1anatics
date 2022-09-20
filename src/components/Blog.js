@@ -21,12 +21,12 @@ function Blog(props) {
             <div className="blog-contentbox">
                 { blogdata.content &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content}}></div> }
-                <div className="blog-secimgbox">
+                { !blogdata.hideSecImg && <div className="blog-secimgbox">
                     <img className="blog-secimg" src={blogdata.secImg} alt="blog_secondary_image"></img>
-                </div>
+                </div> }
                 { blogdata.content2 &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }
-                <h2 className="blog-name"><span>written by </span>{blogdata.name}</h2>
+                <h2 className="blog-name"><span>Written by </span>{blogdata.name}</h2>
             </div>
         </div>
     )

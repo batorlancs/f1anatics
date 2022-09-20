@@ -19,7 +19,7 @@ function Admin() {
                 </Link>
                 <Link className="admin-linklink" to="delete" >
                     <div className="admin-link">
-                        <h2>DELETE AN EXISTING BLOG</h2>
+                        <h2>DELETE OR UPDATE A BLOG</h2>
                     </div>
                 </Link>
             </div>

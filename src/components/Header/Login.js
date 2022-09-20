@@ -43,8 +43,8 @@ function Login() {
                     .then(() => {
                         console.log("email sent");
                     });
-                window.location.reload(false);
                 navigate("/");
+                window.location.reload(false);
             })
             .catch((error) => {
                 setErrorMsg("login was unsuccessful");
@@ -54,8 +54,8 @@ function Login() {
     function signInGoogle() {
         signInWithPopup(auth, providerGoogle)
         .then((result) => {
-            window.location.reload();
             navigate("/");
+            window.location.reload();
             // ...
         }).catch((error) => {
             setErrorMsg("google sign in was unsuccessful");
