@@ -21,7 +21,7 @@ function Header() {
             {/* <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button> */}
             <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button>
             <div className="header-box">
-                <button className="header-button1" onClick={() => (navigate("/"))}>blogs</button>
+                <button className="header-button1" onClick={() => (navigate("/allblogs"))}>blogs</button>
                 <button className="header-button1" onClick={() => (navigate("/"))}>drivers</button>
                 <button className="header-button1" onClick={() => (navigate("/"))}>teams</button>
                 <button className="header-button1" onClick={() => (navigate("/admin/"))}>admin</button>

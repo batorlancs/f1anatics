@@ -110,8 +110,8 @@ function Create(props) {
         if (desc !== "") await setDoc(updateRef, { desc: desc }, { merge: true});
         if (editor1 !== "") await setDoc(updateRef, { content: editor1 }, { merge: true});
         if (editor2 !== "") await setDoc(updateRef, { content2: editor2 }, { merge: true});
-        if (url1 !== "") await setDoc(updateRef, { imgMain: url1 }, { merge: true});
-        if (url2 !== "") await setDoc(updateRef, { imgSec: url2 }, { merge: true});
+        if (url1 !== "") await setDoc(updateRef, { mainImg: url1 }, { merge: true});
+        if (url2 !== "") await setDoc(updateRef, { secImg: url2 }, { merge: true});
         await setDoc(updateRef, { hideSecImg: isSecImg }, { merge: true});
 
         navigate("/");

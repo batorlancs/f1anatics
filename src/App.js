@@ -13,6 +13,7 @@ import Signup from "./components/Header/Signup";
 import Profile from "./components/Header/Profile";
 import Admin from "./components/Admin/Admin";
 import Delete from "./components/Admin/Delete.js";
+import AllBlogs from "./components/AllBlogs/AllBlogs";
 import ScrollToTop from "./components/ScrollToTop";
 import Page404 from "./components/Page404";
 import Header from "./components/Header/Header";
@@ -28,6 +29,44 @@ function App() {
     function checkIfAdmin() {
         return auth.currentUser &&
         (Admins.indexOf(auth.currentUser.uid) !== -1);
+    }
+
+    function calcPosted(blogtime) {
+        var today = new Date().getTime();
+        var diff = (today - blogtime) / 1000;
+        if (diff < 60) {
+            return "less then a minute ago";
+        } else if (diff < 3600) {
+            diff /= 60;
+            if (Math.floor(diff) === 1)
+                return (`${Math.floor(diff)} minute ago`);
+            else
+                return (`${Math.floor(diff)} minutes ago`);
+        } else if (diff < 86400) {
+            diff /= 3600;
+            if (Math.floor(diff) === 1)
+                return (`${Math.floor(diff)} hour ago`);
+            else
+                return (`${Math.floor(diff)} hours ago`);
+        } else if (diff < 2628288) {
+            diff /= 86400;
+            if (Math.floor(diff) === 1)
+                return (`${Math.floor(diff)} day ago`);
+            else
+                return (`${Math.floor(diff)} days ago`);
+        } else if (diff < 31536000) {
+            diff /= 2628288;
+            if (Math.floor(diff) === 1)
+                return (`${Math.floor(diff)} month ago`);
+            else
+                return (`${Math.floor(diff)} months ago`);
+        } else {
+            diff /= 31536000;
+            if (Math.floor(diff) === 1)
+                return (`${Math.floor(diff)} year ago`);
+            else
+                return (`${Math.floor(diff)} years ago`);
+        }
     }
 
     // get all blogs from the firebase
@@ -50,7 +89,7 @@ function App() {
             <Header />
             <ScrollToTop />
             <Routes>
-                <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber}/>}></Route>
+                <Route path="/" element={<Home blogs={blogList} blogNumber={blogNumber} calcPosted={calcPosted}/>}></Route>
                 {checkIfAdmin() && <Route path="/admin" element={<Admin />}></Route>}
                 {checkIfAdmin() && <Route path="/admin/create" element={<Create blogNumber={blogNumber} incBlogNumber={() => {setBlogNumber(prevBlogNumber => prevBlogNumber++);}}/>}></Route>}
                 {checkIfAdmin() && <Route path="/admin/delete" element={<Delete blogs={blogList}/>}></Route>}
@@ -64,6 +103,7 @@ function App() {
                         <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogdata={blog}/>}></Route>
                     )
                 })}
+                {blogList.length > 0 && <Route path="/allblogs" element={<AllBlogs blogs={blogList} calcPosted={calcPosted}/>}></Route>}
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>

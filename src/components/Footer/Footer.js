@@ -28,8 +28,7 @@ function Footer() {
                 <div className="footer-column columntype1">
                     <h1>f1anatics</h1>
                     <h2>More than fans</h2>
-                    <p>This is a short description of what we are and
-                        what we do for the fans and all that nothing too long.
+                    <p>We are not only fans of F1. We are obsessed with all the details and information that make up our beloved sport, we analyse situations to understand and make You understand the world of F1 better and better with each article… We are F1anatics, we are More Than Fans.
                     </p>
                 </div>
                 <div className="footer-column columntype2">

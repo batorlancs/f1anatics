@@ -22,7 +22,7 @@ function Home(props) {
 
     return (
         <div>
-            {blogs.length > 0 && <Hero blogs={blogs} blogNumber={blogNumber} navigateToHeroBlog={navigateToHeroBlog} blogClick={blogClick}/>}
+            {blogs.length > 0 && <Hero blogs={blogs} blogNumber={blogNumber} navigateToHeroBlog={navigateToHeroBlog} blogClick={blogClick} calcPosted={props.calcPosted}/>}
             {blogs.length > 0 && <BlogList blogs={blogs} blogClick={blogClick}/>}
         </div>
     )
