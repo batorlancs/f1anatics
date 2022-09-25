@@ -24,7 +24,7 @@
 }
 
 .allblogs > button:hover {
-    background-color: white;
+    background-color: whitesmoke;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
@@ -74,10 +74,10 @@
 
 .allblogs-box2 p {
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     margin-top: 5px;
-    color: #5941F2;
+    color: #164D59;
 }
 
 .allblogs-odd {
@@ -126,5 +126,11 @@
     .allblogs {
         padding-top: 15px;
         padding-inline: 5%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .allblogs-blog {
+        height: 175px;
     }
 }

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AllBlogs.css";
 
 function AllBlogs(props) {
 
     const [blogsInOrder, setBlogsInOrder] = useState([]);
+    let navigate = useNavigate();
 
     // sort blogs in order
     useEffect(() => {
@@ -14,7 +16,9 @@ function AllBlogs(props) {
         <div className="allblogs">
             {blogsInOrder.slice(0, 100).map((blog) => {
                 return (
-                    <button>
+                    <button onClick={() => {
+                        navigate(`/blog/${blog.id}`);
+                    }}>
                         <div className="allblogs-blog" key={blog.id}>
                             <div className="allblogs-box1">
                                 <img className="allblogs-img" src={blog.mainImg}></img>

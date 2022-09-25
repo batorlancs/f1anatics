@@ -64,8 +64,8 @@
     margin-top: 20px;
     height: 50px;
     width: 180px;
-    border: 1.5px solid #5941F2;
-    background-color: #5941F2;
+    border: 1.5px solid #458C78;
+    background-color: #458C78;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -74,7 +74,7 @@
 }
 
 .bloglist-cont-button:hover {
-    color: #5941F2;
+    color: #458C78;
     background-color: inherit;
 }
 
@@ -112,7 +112,7 @@
 
 @media only screen and (max-width: 1050px) {
     .bloglist-cont-box {
-        background-color: whitesmoke;
+        background-color: #e8e8e8;
     }
 
     .bloglist-cont-title {

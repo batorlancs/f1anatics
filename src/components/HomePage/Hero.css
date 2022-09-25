@@ -1,5 +1,6 @@
 .hero {
-    background-color: white;
+    /* background-color: white; */
+    background-color: #F2F2F2;
 }
 
 .hero-box {
@@ -15,7 +16,7 @@
 
 .hero-title {
     margin: 0;
-    color: black;
+    color: color;
     font-size: 45px;
     width: 100%;
     /* background-color: #5941F2; */
@@ -32,14 +33,15 @@
 }
 
 .hero-buttondesc {
+    color: black;
     font-size: 18px;
 }
 
 .hero-button {
     height: 50px;
     width: 180px;
-    border: 1.5px solid #5941F2;
-    background-color: #5941F2;
+    border: 1.5px solid #458C78;
+    background-color: #458C78;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -49,7 +51,7 @@
 }
 
 .hero-button:hover {
-    color: #5941F2;
+    color: #458C78;
     background-color: inherit;
 }
 
@@ -125,6 +127,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .hero-box {
+        margin-top: 100px;
+    }
     .hero-pic1 {
         width: 140%;
     }

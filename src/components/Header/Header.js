@@ -18,8 +18,8 @@ function Header() {
     return (
         <>
         <div className="header">
-            {/* <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button> */}
-            <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button>
+            <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button>
+            {/* <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button> */}
             <div className="header-box">
                 <button className="header-button1" onClick={() => (navigate("/allblogs"))}>blogs</button>
                 <button className="header-button1" onClick={() => (navigate("/"))}>drivers</button>
@@ -41,7 +41,7 @@ function Header() {
                 { auth.currentUser ? 
                 <button className="drop-link" onClick={() => {toggleDrop(); navigate("/profile");}}>PROFILE</button> :
                 <button className="drop-link" onClick={() => {toggleDrop(); navigate("/login");}}>LOGIN</button> } <hr/>
-                <button className="drop-link" onClick={() => {toggleDrop(); navigate("/");}}>ALL BLOGS</button><hr/>
+                <button className="drop-link" onClick={() => {toggleDrop(); navigate("/allblogs");}}>ALL BLOGS</button><hr/>
                 <button className="drop-link" onClick={() => {toggleDrop(); navigate("/");}}>CURRENT DRIVERS</button><hr/>
                 <button className="drop-link" onClick={() => {toggleDrop(); navigate("/");}}>CURRENT TEAMS</button><hr/>
                 <button className="drop-link" onClick={() => {toggleDrop(); navigate("/");}}>ABOUT US</button><hr/>
