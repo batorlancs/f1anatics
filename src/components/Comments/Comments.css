@@ -1,0 +1,168 @@
+.compage {
+    margin-inline: 20%;
+    margin-bottom: 100px;
+}
+
+.compage p, .compage h2, .compage h3 {
+    margin: 0;
+}
+
+.com {
+    /* background-color: white; */
+}
+
+.com-postpage {
+    background-color: rgb(227, 227, 227);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.com-desc {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.com-title {
+    margin: 0;
+    color: #458C78;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.com-post {
+    display: flex;
+}
+
+.com-post > button {
+    width: 80px;
+    border: none;
+    border-bottom: 2px solid #458C78;
+    background-color: inherit;
+    cursor: pointer;
+    margin-left: 10px;
+    transition-duration: 0.4s;
+}
+
+.com-post > button:hover {
+    width: 120px;
+    opacity: 50%;
+}
+
+.com-post > button > img {
+    transition-duration: 0.4s;
+    height: 30px;
+    filter: invert(48%) sepia(17%) saturate(936%) hue-rotate(112deg) brightness(97%) contrast(95%);
+}
+
+.com-post-text {
+    width: 100%;
+    height: 50px;
+    padding-inline: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    background-color: inherit;
+    border-bottom: 2px solid rgb(176, 176, 176);
+}
+
+.com-com {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-block: 20px;
+    width: 100%;
+}
+
+.com-picbox {
+    min-height: 70px;
+    min-width: 70px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 35px;
+    margin-right: 15px;
+}
+
+.com-pic {
+    height: 70px;
+}
+
+.com-cont {
+    width: 100%;
+}
+
+.com-cont-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.com-cont-top > h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.com-cont-top > h3 {
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.com-cont-middle > p {
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+
+.com-cont-middle > p > span {
+    font-weight: 500;
+    color: #458C78;
+}
+
+.com-cont-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.com-cont-bottom > button {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.com-cont-bottom > button:hover {
+    opacity: 40%;
+}
+
+.com-cont-bottom > button > img {
+    height: 20px;
+}
+
+.com-cont-up {
+    margin-left: 8px;
+    margin-right: 5px;
+}
+
+.com-cont-reply {
+    margin-left: 20px;
+}
+
+.com-cont-reply > img {
+    margin-right: 5px;
+}
+
+.com-reply {
+    padding-left: 80px;
+}

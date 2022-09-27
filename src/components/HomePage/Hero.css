@@ -1,12 +1,22 @@
 .hero {
     /* background-color: white; */
-    background-color: #F2F2F2;
+    /* background-color: #F2F2F2; */
+}
+
+.hero-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 730px;
+    width: 46%;
+    background-color: #458C78;
+    /* background-color: #242424; */
+    z-index: -1;
 }
 
 .hero-box {
     margin-top: 120px;
     margin-bottom: 40px;
-    /* background-color: aliceblue; */
     margin-inline: 10%;
     display: flex;
     flex-direction: row;
@@ -16,15 +26,13 @@
 
 .hero-title {
     margin: 0;
-    color: color;
+    color: white;
     font-size: 45px;
     width: 100%;
-    /* background-color: #5941F2; */
 }
 
 .hero-box-cont {
     margin-left: 40px;
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -48,11 +56,28 @@
     font-weight: 400;
     cursor: pointer;
     transition-duration: 0.4s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-button:hover {
     color: #458C78;
     background-color: inherit;
+    
+}
+
+.hero-button-arrow {
+    height: 25px;
+    margin-left: 8px;
+    filter: brightness(0) invert(1);
+    transition-duration: 0.4s;
+}
+
+.hero-button:hover > .hero-button-arrow {
+    margin-left: 15px;
+    filter: invert(48%) sepia(17%) saturate(936%) hue-rotate(112deg) brightness(97%) contrast(95%);
 }
 
 .hero-picbox {
@@ -84,7 +109,7 @@
 .hero-desc {
     margin-inline: 10%;
     margin-top: 30px;
-    color: black;
+    color: white;
     font-size: 20px;
 }
 

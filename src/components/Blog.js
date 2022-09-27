@@ -1,5 +1,6 @@
 import React from "react";
 import "./Blog.css";
+import Comments from "./Comments/Comments";
 
 function Blog(props) {
 
@@ -27,6 +28,7 @@ function Blog(props) {
                 { blogdata.content2 &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content2}}></div> }
                 <h2 className="blog-name"><span>Written by </span>{blogdata.name}</h2>
+                <Comments blogid={blogdata.id} calcPosted={props.calcPosted}/>
             </div>
         </div>
     )

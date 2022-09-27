@@ -1,0 +1,90 @@
+.replypop-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.replypop-back {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+    z-index: 1;
+}
+
+.replypop {
+    padding: 20px;
+    height: 200px;
+    width: 100%;
+    max-width: 600px;
+    margin-inline: 5%;
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.replypop > h2 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.replypop > h2 > span {
+    color: #458C78;
+    font-weight: 600;
+}
+
+.replypop > input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    height: 40px;
+    width: 400px;
+    margin-block: 20px;
+    border: none;
+    border-bottom: 2px solid gray;
+    background-color: inherit;
+    padding-inline: 20px;
+}
+
+.reply-buttons > button {
+    height: 30px;
+    width: 100px;
+    margin-inline: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+.reply-button-cancel {
+    background-color: inherit;
+    border: 1px solid gray;
+    color: gray;
+}
+
+.reply-button-cancel:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+.reply-button-reply {
+    background-color: inherit;
+    color: #458C78;
+    border: 1px solid #458C78;
+}
+
+.reply-button-reply:hover {
+    background-color: #458C78;
+    color: white;
+}

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../../Firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
 import MenuIcon from "../../pic/menuicon.svg";
 import CloseIcon from "../../pic/closeicon.svg";
@@ -9,15 +9,40 @@ import Logo from "../../pic/fanaticlogo.png";
 function Header() {
 
     let navigate = useNavigate();
+    const location = useLocation();
     const [dropDown, setDropDown] = useState(false);
+    const [navbar, setNavbar] = useState();
+    
+
+    useEffect(() => {
+        console.log(location.pathname);
+        if (location.pathname === "/") {
+            setNavbar(false);
+        } else {
+            setNavbar(true);
+        }
+    }, [location])
 
     function toggleDrop() {
         setDropDown(prev => !prev);
     }
 
+    window.addEventListener("scroll", changeBackground);
+
+    function changeBackground() {
+        if (location.pathname === "/") {
+            window.scrollY >= 40 ? setNavbar(true) : setNavbar(false);
+        } else {
+            setNavbar(true);
+        }
+    }
+
+    
+    
+
     return (
         <>
-        <div className="header">
+        <div className={!navbar ? "header" : "header-active"}>
             <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button>
             {/* <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button> */}
             <div className="header-box">

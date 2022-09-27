@@ -173,7 +173,8 @@ function Create(props) {
                 day: new Date().getDate().toString(),
                 time: new Date().getTime()
             },
-            hideSecImg: isSecImg
+            hideSecImg: isSecImg,
+            comments: []
         });
         navigate("/");
         window.location.reload(false);

@@ -100,7 +100,7 @@ function App() {
                 })}
                 {blogList.map((blog) => {
                     return (
-                        <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogdata={blog}/>}></Route>
+                        <Route key={blog.id} path={`/blog/${blog.id}`} element={<Blog blogdata={blog} calcPosted={calcPosted}/>}></Route>
                     )
                 })}
                 {blogList.length > 0 && <Route path="/allblogs" element={<AllBlogs blogs={blogList} calcPosted={calcPosted}/>}></Route>}

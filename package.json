@@ -17,6 +17,7 @@
     "react-scripts": "5.0.1",
     "react-uuid": "^1.0.3",
     "uuid": "^9.0.0",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
