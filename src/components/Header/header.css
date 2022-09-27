@@ -55,6 +55,7 @@
 
 .header-logo-img {
     height: 25px;
+    cursor: pointer;
 }
 
 .header-box {
