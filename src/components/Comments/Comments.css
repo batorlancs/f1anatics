@@ -112,6 +112,7 @@
     font-size: 12px;
     font-weight: 400;
     margin-left: 20px;
+    font-style: italic;
 }
 
 .com-cont-middle > p {
@@ -165,4 +166,31 @@
 
 .com-reply {
     padding-left: 80px;
+}
+
+@media only screen and (max-width: 1050px) {
+    .compage {
+        margin-inline: 17.5%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .compage {
+        margin-inline: 15%;
+    }
+    .com-cont-top {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .com-cont-top > h3 {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .compage {
+        margin-inline: 5%;
+    }
+    
 }

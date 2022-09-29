@@ -1,7 +1,8 @@
 .bloglist {
     margin: 0;
-    margin-top: 100px;
+    padding-top: 30px;
     margin-bottom: 100px;
+    background-color: #F2F2F2;
 }
 
 .bloglist-cont-box {
@@ -71,11 +72,19 @@
     font-size: 18px;
     cursor: pointer;
     transition-duration: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bloglist-cont-button:hover {
     color: #458C78;
     background-color: inherit;
+}
+
+.bloglist-cont-button:hover > .hero-button-arrow {
+    margin-left: 15px;
+    filter: invert(48%) sepia(17%) saturate(936%) hue-rotate(112deg) brightness(97%) contrast(95%);
 }
 
 /* PREV */
@@ -94,6 +103,24 @@
 .cardprev {
     padding-top: 50px;
     background-color: white;
+}
+
+@media only screen and (min-width: 1600px) {
+    .bloglist-cont-title {
+        font-size: 32px;
+    }
+    .bloglist-cont-desc {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .bloglist-cont-title {
+        font-size: 34px;
+    }
+    .bloglist-cont-desc {
+        font-size: 22px;
+    }
 }
 
 @media only screen and (max-width: 1300px) {

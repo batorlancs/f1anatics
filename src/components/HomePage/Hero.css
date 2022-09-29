@@ -7,11 +7,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 730px;
+    height: 1000px;
     width: 46%;
     background-color: #458C78;
     /* background-color: #242424; */
-    z-index: -1;
+    z-index: -5;
 }
 
 .hero-box {
@@ -27,17 +27,20 @@
 .hero-title {
     margin: 0;
     color: white;
-    font-size: 45px;
-    width: 100%;
+    font-size: 35px;
+    width: 45%;
+    padding-right: 60px;
+    /* margin-right: 20px; */
+    /* background-color: lightsalmon; */
 }
 
 .hero-box-cont {
-    margin-left: 40px;
+    /* margin-left: 40px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    width: 100%;
+    width: 48%;
 }
 
 .hero-buttondesc {
@@ -107,24 +110,53 @@
 }
 
 .hero-desc {
+    width: 36%;
     margin-inline: 10%;
+    margin-bottom: 60px;
     margin-top: 30px;
     color: white;
     font-size: 20px;
 }
 
-@media only screen and (max-width: 1050px) {
+
+
+@media only screen and (min-width: 1600px) {
     .hero-title {
         font-size: 40px;
     }
+    .hero-buttondesc {
+        font-size: 20px;
+    }
+    .hero-picbox {
+        height: 350px;
+    }
+}
 
+@media only screen and (min-width: 1800px) {
+    .hero-title {
+        font-size: 42px;
+    }
+    .hero-buttondesc {
+        font-size: 22px;
+    }
+    .hero-picbox {
+        height: 400px;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .hero-title {
+        font-size: 30px;
+    }
     .hero-pic2box {
         width: 0;
         height: 0;
     }
-
     .hero-pic1 {
         width: 100%;
+    }
+    .hero-desc {
+        font-size: 18px;
     }
 }
 
@@ -134,12 +166,18 @@
     }
     .hero-title {
         font-size: 35px;
+        color: black;
+        width: 100%;
+        padding-right: 0;
     }
-    .hero-buttondesc {
-        font-size: 16px;
+
+    .hero-back {
+        width: 0;
     }
     .hero-box {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
     .hero-buttondesc {
         margin-top: 10px;
@@ -148,12 +186,22 @@
     }
     .hero-box-cont {
         margin-left: 0;
+        width: 100%;
+    }
+    .hero-desc {
+        font-size: 18px;
+        color: black;
+        width: 100%;
+        margin-bottom: 0px;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .hero-box {
-        margin-top: 100px;
+    .hero-title {
+        font-size: 30px;   
+    }
+    .hero-desc {
+        font-size: 16px;
     }
     .hero-pic1 {
         width: 140%;
@@ -166,6 +214,7 @@
         margin-inline: 5%;
     }
     .hero-box {
+        margin-top: 90px;
         margin-inline: 5%;
     }
 

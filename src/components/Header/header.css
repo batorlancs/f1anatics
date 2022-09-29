@@ -10,7 +10,7 @@
     position: fixed;
     z-index: 5;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* transition-duration: 0.8s; */
+    transition-duration: 0.6s;
     background-color: #F2F2F2;
 }
 
@@ -26,7 +26,7 @@
     position: fixed;
     z-index: 5;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* transition-duration: 0.8s; */
+    transition-duration: 0.6s;
 }
 
 .header-active button {
@@ -45,7 +45,7 @@
     width: 46%;
     background-color: #458C78;
     z-index: -1;
-    /* transition-duration: 0.6s; */
+    transition-duration: 0.6s;
 }
 
 .header-color-active {
@@ -57,7 +57,7 @@
 
     background-color: #458C78;
     z-index: -1;
-    /* transition-duration: 0.6s; */
+    transition-duration: 0.6s;
 }
 
 .header-color2 {
@@ -158,7 +158,7 @@
     opacity: 0%;
     display: none;
     cursor: pointer;
-    background-color: inherit;
+    background-color: transparent;
     border: none;
     transition-duration: 0.4s;
 }
@@ -177,10 +177,13 @@
 }
 
 .drop-back {
+    /* position: fixed;
+    top: 0;
+    right: 0; */
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 20%;
+    opacity: 35%;
 }
 
 .drop-clicktracker {
@@ -193,43 +196,73 @@
     position: fixed;
     right: 0;
     top: 0;
-    background-color: whitesmoke;
+    background-color: #458C78;
     height: 100%;
-    width: 50%;
+    width: 54%;
     z-index: 2;
-    padding-top: 80px;
+    margin-top: 80px;
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
     text-align: right;
+    transition-duration: 0.4s;
 }
 
-.drop > hr {
-    margin: 0;
-    width: 100%;
-    border: 1px solid black;
-    opacity: 8%;
+.drop-off {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    background-color: #458C78;
+    width: 0;
+    height: 100%;
+    transition-duration: 0.4s;
 }
 
 .drop-link {
     text-align: right;
     border: none;
     background-color: inherit;
-    padding-block: 20px;
+    padding-block: 10px;
     padding-right: 22%;
-    padding-left: 20px;
+    padding-left: 15px;
     width: 100%;
-    color: black;
+    color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    transition-duration: 0.4s;
+    font-size: 20px;
+    font-weight: 500;
+    transition-duration: 1.6s;
     cursor: pointer;
+    white-space: nowrap;
+
 }
 
-.drop-link:hover {
-    background-color: white;
+.drop-link-off {
+    text-align: right;
+    border: none;
+    background-color: inherit;
+    padding-block: 10px;
+    padding-left: 20px;
+    width: 100%;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition-duration: 0.2s;
+    opacity: 0%;
+    white-space: nowrap;
 }
+
+.header-drop-img1 {
+    transition-duration: 0.6s;
+}
+
+.header-drop-img2 {
+    transition-duration: 0.6s;
+}
+
 @media only screen and (max-width: 2000px) {
     .header-box {
         width: 39.1%;
@@ -265,17 +298,27 @@
 }
 
 @media only screen and (max-width: 750px) {
-    .drop {
-        width: 62.5%;
-    }
 
     .drop-link {
         padding-right: 18%;
     }
+
+    .header-color2 {
+        height: 80px;
+    }
+    .header-drop-img1 {
+        filter: brightness(0) invert(1);
+    }
+    .header-drop-img2 {
+        filter: brightness(0) invert(1);
+    }
+    .header-logo:hover {
+        opacity: 100%;
+    }
 }
 
 @media only screen and (max-width: 500px) {
-    .header {
+    .header, .header-active {
         height: 60px;
     }
     .header-logo {
@@ -288,11 +331,20 @@
         margin-right: 5%;
     }
     .drop {
-        width: 75%;
-        padding-top: 60px;
+        width: 70%;
+        margin-top: 60px;
     }
     .drop-link {
-        padding-block: 15px;
+        padding-block: 10px;
         padding-right: 8%;
+    }
+    .header-color, .header-color-active, .header-color2, .header-color2-active {
+        height: 60px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .drop {
+        width: 80%;
     }
 }

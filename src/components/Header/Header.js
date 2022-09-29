@@ -57,12 +57,12 @@ function Header() {
                 <button className="header-button1" onClick={() => (navigate("/login"))}>login</button> }
             </div>
             {   !dropDown ?
-                <button className="header-button2" onClick={toggleDrop}><img src={MenuIcon} alt="menu_icon"></img></button> :
-                <button className="header-button2" onClick={toggleDrop}><img src={CloseIcon} alt="menu_close_icon"></img></button>
+                <button className="header-button2" onClick={toggleDrop}><img src={MenuIcon} alt="menu_icon" className="header-drop-img1"></img></button> :
+                <button className="header-button2" onClick={toggleDrop}><img src={CloseIcon} alt="menu_close_icon" className="header-drop-img2"></img></button>
             }
 
         </div>
-        { dropDown && 
+        {/* { dropDown && 
         <div className="drop-page">
             <div className="drop">
                 { auth.currentUser ? 
@@ -78,7 +78,23 @@ function Header() {
             <div className="drop-back">
                 <button onClick={toggleDrop} className="drop-clicktracker"></button>
             </div>
-        </div> }
+        </div> } */}
+        <div className={dropDown ? "drop-page" : ""}>
+            <div className={dropDown ? "drop" : "drop-off"}>
+                { auth.currentUser ? 
+                <button className={dropDown ? "drop-link" : "drop-link-off"} onClick={() => {toggleDrop(); navigate("/profile");}}>PROFILE</button> :
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/login");}}>LOGIN</button> }
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/allblogs");}}>ALL BLOGS</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>CURRENT DRIVERS</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>CURRENT TEAMS</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>ABOUT US</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>CONTACT US</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>HOME</button>
+            </div>
+            {dropDown && <div className="drop-back">
+                <button onClick={toggleDrop} className="drop-clicktracker"></button>
+            </div>}
+        </div>
         </>
     )
 }

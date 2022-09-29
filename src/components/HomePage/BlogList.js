@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate } from "react-router-dom";
+import ArrowIcon from "../../pic/closeicon.svg";
 import "./BlogList.css";
 
 
@@ -29,7 +30,8 @@ function BlogList(props) {
                                     <button className="bloglist-cont-button" onClick={() => {
                                         navigate(`/blog/${blog.id}`);
                                         props.blogClick();
-                                    }}>read more</button>
+                                    }}>Read more
+                                    <img className="hero-button-arrow" src={ArrowIcon}></img></button>
                                 </div>
                             </div>
                         </div>
