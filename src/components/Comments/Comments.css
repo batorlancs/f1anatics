@@ -192,5 +192,10 @@
     .compage {
         margin-inline: 5%;
     }
-    
+    .com-title {
+        font-size: 20px;
+    }
+    .com-post-text {
+        height: 40px;
+    }
 }

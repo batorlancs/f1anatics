@@ -24,7 +24,8 @@
     height: 200px;
     width: 100%;
     max-width: 600px;
-    margin-inline: 5%;
+    min-width: 250px;
+    margin-inline: 10%;
     background-color: #F2F2F2;
     border-radius: 20px;
     z-index: 2;
@@ -48,7 +49,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     height: 40px;
-    width: 400px;
+    width: 100%;
     margin-block: 20px;
     border: none;
     border-bottom: 2px solid gray;
@@ -56,10 +57,16 @@
     padding-inline: 20px;
 }
 
+.reply-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .reply-buttons > button {
     height: 30px;
     width: 100px;
-    margin-inline: 20px;
+    margin-inline: 10px;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     cursor: pointer;

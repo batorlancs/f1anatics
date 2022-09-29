@@ -295,6 +295,7 @@
         display: flex;
         opacity: 100%;
     }
+    
 }
 
 @media only screen and (max-width: 750px) {
@@ -306,14 +307,15 @@
     .header-color2 {
         height: 80px;
     }
+    
+    .header-logo:hover {
+        opacity: 100%;
+    }
     .header-drop-img1 {
         filter: brightness(0) invert(1);
     }
     .header-drop-img2 {
         filter: brightness(0) invert(1);
-    }
-    .header-logo:hover {
-        opacity: 100%;
     }
 }
 
