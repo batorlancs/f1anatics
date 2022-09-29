@@ -10,11 +10,12 @@
     position: fixed;
     z-index: 5;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition-duration: 0.6s;
+    /* transition-duration: 0.8s; */
+    background-color: #F2F2F2;
 }
 
 .header-active {
-    background-color: #458C78;
+    background-color: #F2F2F2;
     height: 80px;
     display: flex;
     flex-direction: row;
@@ -25,7 +26,7 @@
     position: fixed;
     z-index: 5;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition-duration: 0.6s;
+    /* transition-duration: 0.8s; */
 }
 
 .header-active button {
@@ -36,13 +37,58 @@
     background-color: white;
 }
 
+.header-color {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 46%;
+    background-color: #458C78;
+    z-index: -1;
+    /* transition-duration: 0.6s; */
+}
+
+.header-color-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 46%;
+
+    background-color: #458C78;
+    z-index: -1;
+    /* transition-duration: 0.6s; */
+}
+
+.header-color2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 0px;
+    width: 100%;
+    background-color: #458C78;
+    z-index: -1;
+    transition-duration: 0.6s;
+}
+
+.header-color2-active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #458C78;
+    z-index: -1;
+    transition-duration: 0.6s;
+}
+
 .header-logo {
     border: none;
-    background-color: inherit;
+    background-color: transparent;
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     font-weight: 700;
-    color: white;
+    /* color: white; */
     margin: 0;
     margin-left: 10%;
     cursor: pointer;
@@ -80,6 +126,7 @@
     cursor: pointer;
     display: inline-block;
     position: relative;
+    transition-duration: 0.6s;
 }
 
 .header-button1:after {

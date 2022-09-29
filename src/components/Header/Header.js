@@ -43,6 +43,8 @@ function Header() {
     return (
         <>
         <div className={!navbar ? "header" : "header-active"}>
+            <div className={!navbar ? "header-color" : "header-color-active"}></div>
+            <div className={!navbar ? "header-color2" : "header-color2-active"}></div>
             {/* <button className="header-logo" onClick={() => (navigate("/"))}>f1anatics</button> */}
             <button className="header-logo" onClick={() => (navigate("/"))}><img src={Logo} className="header-logo-img"></img></button>
             <div className="header-box">
