@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../Firebase";
 import { auth } from "../../Firebase";
-import { doc, getDocs, setDoc , addDoc, collection, getDoc } from "firebase/firestore";
+import { doc, getDocs, setDoc , addDoc, collection, getDoc, deleteDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid';
 import { useNavigate } from "react-router-dom";
 
@@ -10,8 +10,12 @@ import ArrowUpIcon from "../../pic/commenticons/up.svg";
 import ArrowDownIcon from "../../pic/commenticons/down.svg";
 import ReplyIcon from "../../pic/commenticons/reply.svg";
 import PostIcon from "../../pic/commenticons/post.svg";
+import DeleteIcon from "../../pic/commenticons/delete.svg";
 import Reply from "./Reply";
+import DeletePopup from "./Popups/DeletePopup";
+import Login from "../Header/Login";
 import "./Comments.css";
+import Signup from "../Header/Signup";
 
 function Comments(props) {
 
@@ -21,14 +25,24 @@ function Comments(props) {
     const [replies, setReplies] = useState([]);
     const [replyName, setReplyName] = useState("");
     const [replyId, setReplyId] = useState("");
+    const [deleteComId, setDeleteComId] = useState("");
+    const [deleteRepId, setDeleteRepId] = useState("");
+    const [deleteReplies, setDeleteReplies] = useState([]);
     const [commentCount, setCommentCount] = useState(0);
+    const [loginPop, setLoginPop] = useState(false);
+    const [registerPop, setRegisterPop] = useState(false);
 
     let navigate = useNavigate();
 
     useEffect(() => {
+        refreshComments();
+    }, [])
+
+    function refreshComments() {
         const getReplies = async (id) => {
             const data = await getDocs(collection(db, "blogs", props.blogid, "comments", id, "replies"));
             const newData = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
+            newData.sort((a, b) => a.time - b.time);
             setComments(prev => (
                 prev.map((com) => {
                     if (com.id === id) {
@@ -48,7 +62,7 @@ function Comments(props) {
             })
         }
         getComments();
-    }, [])
+    }
 
     useEffect(() => {
         let ctr = 0;
@@ -64,7 +78,7 @@ function Comments(props) {
     const like = async(commentid) => {
 
         if (auth.currentUser == null) {
-            navigate("/login");
+            setLoginPop(true)
             return;
         }
 
@@ -83,13 +97,14 @@ function Comments(props) {
             await setDoc(commentRef, {likes: data.likes - 1}, {merge: true});
         }
         await setDoc(commentRef, { likeIDs: likeIDs}, {merge: true});
-        window.location.reload(false);
+        // window.location.reload(false);
+        refreshComments();
     }
 
     const replylike = async(commentid, replyid) => {
 
         if (auth.currentUser == null) {
-            navigate("/login");
+            setLoginPop(true);
             return;
         }
 
@@ -108,7 +123,8 @@ function Comments(props) {
             await setDoc(commentRef, {likes: data.likes - 1}, {merge: true});
         }
         await setDoc(commentRef, { likeIDs: likeIDs}, {merge: true});
-        window.location.reload(false);
+        // window.location.reload(false);
+        refreshComments();
     }
 
     function likedBefore(arr) {
@@ -123,7 +139,7 @@ function Comments(props) {
 
     function postComment() {
         if (auth.currentUser == null) {
-            navigate("/login");
+            setLoginPop(true);
             return;
         }
         if (commentForm === "") {
@@ -135,14 +151,20 @@ function Comments(props) {
     const addComment = async() => {
         const commentRef = doc(db, "blogs", props.blogid, "comments", uuid().slice(0, 18));
         await setDoc(commentRef, {
-            name: auth.currentUser.displayName,
-            photoURL: auth.currentUser.photoURL,
+            user: {
+                id: auth.currentUser.uid,
+                name: auth.currentUser.displayName,
+                photoURL: auth.currentUser.photoURL
+            },
             text: commentForm,
             likes: 0,
             likeIDs: [],
             time: new Date().getTime()
         })
-        window.location.reload(false);
+        // window.location.reload(false);
+        refreshComments();
+        document.getElementById("comment-input").value = "";
+        setCommentForm("");
     }
 
     function postReply(commentid, replyTo) {
@@ -159,15 +181,31 @@ function Comments(props) {
     const addReply = async(commentid, replyTo) => {
         const replyRef = doc(db, "blogs", props.blogid, "comments", commentid, "replies", uuid().slice(0, 18));
         await setDoc(replyRef, {
-            name: auth.currentUser.displayName,
-            photoURL: auth.currentUser.photoURL,
+            user: {
+                id: auth.currentUser.uid,
+                name: auth.currentUser.displayName,
+                photoURL: auth.currentUser.photoURL
+            },
             text: replyForm,
             likes: 0,
             likeIDs: [],
             time: new Date().getTime(),
             replyTo: replyTo
         })
-        window.location.reload(false);
+        setReplyName("");
+        refreshComments();
+    }
+
+    const deleteReply = async(commentid, replyid) => {
+        await deleteDoc(doc(db, "blogs", props.blogid, "comments", commentid, "replies", replyid));
+    }
+
+    const deleteComment = async(commentid, replies) => {
+        replies.map((reply) => {
+            deleteReply(commentid, reply.id);
+        })
+        await deleteDoc(doc(db, "blogs", props.blogid, "comments", commentid));
+        refreshComments();
     }
 
     function cancelReply() {
@@ -175,15 +213,32 @@ function Comments(props) {
         setReplyId("");
     }
 
-    // console.log(comments);
+    function cancelDelete() {
+        setDeleteComId("");
+        setDeleteRepId("");
+        setDeleteReplies([]);
+    }
+
+    function cancelLoginPop() {
+        setLoginPop(false);
+        setRegisterPop(false);
+    }
+
+    function makeRegisterPop() {
+        setRegisterPop(true);
+        setLoginPop(false);
+    }
 
     return (
         <div className="compage">
             {replyName !== "" && <Reply name={replyName} id={replyId} cancelReply={cancelReply} postReply={postReply} setForm={setReplyForm}/>}
+            {deleteComId !== "" && <DeletePopup deleteComId={deleteComId} deleteRepId={deleteRepId} deleteReplies={deleteReplies} cancelDelete={cancelDelete} deleteComment={deleteComment} deleteReply={deleteReply} refreshComments={refreshComments}/>}
+            {loginPop && <Login isPop={true} cancel={cancelLoginPop} register={makeRegisterPop}/>}
+            {registerPop && <Signup isPop={true} cancel={cancelLoginPop}/>}
             <div className="com-postpage">
                 <h1 className="com-title">Share your thoughts!</h1>
                 <div className="com-post">
-                    <input type="text" placeholder="Add a Comment..." className="com-post-text" onChange={(event) => {
+                    <input id="comment-input" type="text" placeholder="Add a Comment..." className="com-post-text" onChange={(event) => {
                         setCommentForm(event.target.value);
                     }}/>
                     <button onClick={postComment}><img src={PostIcon}></img></button>
@@ -194,11 +249,11 @@ function Comments(props) {
                 <div className="com" key={com.id}>
                     <div className="com-main com-com">
                         <div className="com-picbox">
-                            <img className="com-pic" src={ProfilePic}></img>
+                            <img className="com-pic" src={com.user.photoURL}></img>
                         </div>
                         <div className="com-cont">
                             <div className="com-cont-top">
-                                <h2>{com.name}</h2>
+                                <h2>{com.user.name}</h2>
                                 <h3>{props.calcPosted(com.time)}</h3>
                             </div>
                             <div className="com-cont-middle">
@@ -213,12 +268,16 @@ function Comments(props) {
                                 </button>
                                 <button className="com-cont-reply" onClick={() => {
                                     if (auth.currentUser == null) {
-                                        navigate("/login");
+                                        setLoginPop(true);
                                         return;
                                     }
-                                    setReplyName(com.name);
+                                    setReplyName(com.user.name);
                                     setReplyId(com.id);
                                 }}><img src={ReplyIcon}></img>Reply</button>
+                                {auth.currentUser !== null && auth.currentUser.uid === com.user.id && <button className="com-cont-reply" onClick={() => {
+                                    setDeleteComId(com.id);
+                                    setDeleteReplies(com.replies);
+                                }}><img src={DeleteIcon}></img>Delete</button>}
                             </div>
                         </div>
                     </div>
@@ -226,11 +285,11 @@ function Comments(props) {
                     {com.replies != null && com.replies.map((reply) => (
                         <div className="com-reply com-com" key={reply.id}>
                             <div className="com-picbox">
-                                <img className="com-pic" src={ProfilePic}></img>
+                                <img className="com-pic" src={reply.user.photoURL}></img>
                             </div>
                             <div className="com-cont">
                                 <div className="com-cont-top">
-                                    <h2>{reply.name}</h2>
+                                    <h2>{reply.user.name}</h2>
                                     <h3>{props.calcPosted(reply.time)}</h3>
                                 </div>
                                 <div className="com-cont-middle">
@@ -245,12 +304,16 @@ function Comments(props) {
                                     </button>
                                     <button className="com-cont-reply" onClick={() => {
                                         if (auth.currentUser == null) {
-                                            navigate("/login");
+                                            setLoginPop(true);
                                             return;
                                         }
-                                        setReplyName(com.name);
+                                        setReplyName(reply.user.name);
                                         setReplyId(com.id);
                                     }}><img src={ReplyIcon}></img>Reply</button>
+                                    {auth.currentUser !== null && auth.currentUser.uid === reply.user.id && <button className="com-cont-reply" onClick={() => {
+                                        setDeleteComId(com.id);
+                                        setDeleteRepId(reply.id);
+                                    }}><img src={DeleteIcon}></img>Delete</button>}
                                 </div>
                             </div>
                         </div>

@@ -7,14 +7,18 @@ import "./Profile.css";
 
 import Popup from './Popups/Popup';
 import Popup2 from './Popups/Popup2';
+import PopupAvatar from "./Popups/PopupAvatar";
 import EditIcon from "../../pic/editicon.svg";
 import Loading from "../../pic/publishing.svg";
+import ProfilePic from "../../pic/profilepic.png";
+
 
 function Profile() {
 
     let navigate = useNavigate();
     const [poppedUp, setPoppedUp] = useState(false);
     const [poppedUp2, setPoppedUp2] = useState(false);
+    const [avatarPop, setAvatarPop] = useState(false);
     const [msg, setMsg] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -60,6 +64,10 @@ function Profile() {
         setPoppedUp2(prev => !prev);
     }
 
+    function cancelAvatarPop() {
+        setAvatarPop(false);
+    }
+
     return (
         <div className="profilepage">
 
@@ -69,13 +77,27 @@ function Profile() {
             { auth.currentUser && poppedUp2 && !poppedUp &&
             <Popup2 name={auth.currentUser.displayName} toggle={togglePopup2}/> }
 
+            { auth.currentUser && avatarPop && 
+            <PopupAvatar cancel={cancelAvatarPop}/>}
+
             { auth.currentUser && 
             <div className="profile">
                 <div className="profile-title">
                     <h1>Profile Info</h1>
                 </div>
                 <div className="profile-content">
-                    <h1>Your details</h1>
+                    <h1>your details</h1>
+                    <button className="profile-avatar" onClick={() => {
+                        setAvatarPop(true);
+                    }}>
+                        <img className="profile-avatarpic" src={auth.currentUser.photoURL != null ? auth.currentUser.photoURL : ProfilePic}></img>
+                        <p>Change Avatar</p>
+                    </button>
+                    <div className="profile-content-row">
+                        <h2>username:</h2>
+                        <h3>{auth.currentUser.displayName}</h3>
+                        <button className="profile-button2" onClick={togglePopup}><img src={EditIcon} alt="edit_icon"></img></button><br/>
+                    </div>
                     <div className="profile-content-row">
                         <h2>email:</h2>
                         <h3>{auth.currentUser.email}</h3>
@@ -86,13 +108,8 @@ function Profile() {
                         <h2 className="green">verified</h2> :
                         <h2 className="red">not verified</h2> }
                     </div>
-                    <div className="profile-content-row">
-                        <h2>name:</h2>
-                        <h3>{auth.currentUser.displayName}</h3>
-                        <button className="profile-button2" onClick={togglePopup}><img src={EditIcon} alt="edit_icon"></img></button><br/>
-                    </div>
                     <button className="profile-button1" onClick={logOut}>sign out</button>
-                    <h1 className="profile-options">Other options</h1>
+                    <h1 className="profile-options">options</h1>
                     { !auth.currentUser.emailVerified && <><button className="profile-button1" onClick={sendEmail}>resend email verification</button><br/></>}
 
                     <button className="profile-button1" onClick={sendPasswordReset}>send reset your password email</button><br/>

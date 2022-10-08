@@ -1,0 +1,19 @@
+.avatar-list {
+    width: 100%;
+    padding-inline: 5%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+.avatar-list-element {
+    margin: 20px;
+}
+
+.avatar-title {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}

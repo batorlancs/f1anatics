@@ -109,10 +109,11 @@
 }
 
 .com-cont-top > h3 {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 400;
     margin-left: 20px;
     font-style: italic;
+    color: gray;
 }
 
 .com-cont-middle > p {
@@ -164,6 +165,10 @@
     margin-right: 5px;
 }
 
+.com-cont-delete {
+    margin-left: 25px;
+}
+
 .com-reply {
     padding-left: 80px;
 }
@@ -186,6 +191,9 @@
     .com-cont-top > h3 {
         margin-left: 0;
     }
+    .com-reply {
+        padding-left: 60px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -197,5 +205,35 @@
     }
     .com-post-text {
         height: 40px;
+    }
+    .com-reply {
+        padding-left: 40px;
+    }
+    .com-picbox {
+        min-height: 50px;
+        min-width: 50px;
+    }
+    .com-pic {
+        height: 50px;
+    }
+    .com-cont-top > h2 {
+        font-size: 14px;
+    }
+    
+    .com-cont-top > h3 {
+        font-size: 8px;
+    }
+    
+    .com-cont-middle > p {
+        font-size: 14px;
+    }
+    .com-cont-bottom > button {
+        font-size: 12px;
+    }
+    .com-cont-bottom > button > img {
+        height: 15px;
+    }
+    .com-cont-bottom > p {
+        font-size: 12px;
     }
 }

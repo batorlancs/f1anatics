@@ -30,7 +30,7 @@
     width: 40%;
     height: 100%;
     padding: 30px;
-    background-color: #5941F2;
+    background-color: #458C78;
     color: white;
     display: flex;
     justify-content: center;
@@ -39,6 +39,43 @@
 .profile-content {
     width: 100%;
     padding: 30px;
+}
+
+.profile-avatar {
+    font-family: 'Montserrat', sans-serif;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile-avatarpic {
+    height: 150px;
+    border-radius: 50%;
+    transition-duration: 0.4s;
+}
+
+.profile-avatar > p {
+    position: absolute;
+    color: white;
+    font-weight: 500;
+    opacity: 0%;
+    padding-top: 30px;
+    transition-duration: 0.4s;
+}
+
+.profile-avatar:hover > p {
+    padding-top: 0px;
+    opacity: 100%;
+}
+
+.profile-avatar:hover > .profile-avatarpic {
+    filter: brightness(50%);
 }
 
 .profile-content-row {
@@ -134,26 +171,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 5;
 }
 
 .profile-popup-back {
-    position: inherit;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: black;
     opacity: 50%;
-    z-index: 1;
+    z-index: 5;
 }
 
 .profile-popup {
+    position: fixed;
     padding: 20px;
     height: 300px;
     width: 100%;
     max-width: 600px;
     margin-inline: 5%;
     background-color: white;
-    z-index: 2;
+    z-index: 6;
     display: flex;
     flex-direction: column;
     justify-content: center;

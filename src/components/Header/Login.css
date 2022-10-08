@@ -1,37 +1,105 @@
-.loginpage {
+.loginpagepop {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    min-height: 800px;
+    z-index: 2;
+    overflow: auto;
+}
+
+.loginpage {
+    z-index: 5;
+    width: 100%;
+    margin-top: 80px;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
 }
 
 .loginback {
+    top: 0;
+    left: 0;
     position: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='29' height='29' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect width='100%25' height='100%25' fill='rgba(247, 250, 252,1)'/%3E%3Cpath d='M-10 30h60v4h-60zM-10-10h60v4h-60' fill='rgba(160, 174, 192,1)'/%3E%3Cpath d='M-10 18h60v4h-60zM-10-22h60v4h-60z' fill='rgba(45, 55, 72,1)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ");
+    background-image: url(../../pic/background1.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -1;
-    opacity: 40%;
+    /* opacity: 50%; */
+}
+
+.loginbackpop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 2;
+    opacity: 30%;
 }
 
 .login {
-    margin-top: 150px;
+    max-width: 800px;
+    width: 100%;
     margin-bottom: 80px;
     margin-inline: 10%;
     background-color: white;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 70%;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.loginpop {
+    margin-top: 120px;
+    position: fixed;
+    width: 60%;
+    height: 70%;
+    top: 0;
+    margin-inline: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    z-index: 3;
+    overflow: auto;
 }
 
 .login-box1 {
     width: 30%;
     padding: 30px;
-    background-color: #5941F2;
+    background-color: #458C78;
     color: white;
-    height: 100%;
+}
+
+.login-box1pop {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(208, 208, 208);
+    position: sticky;
+    top: 0;
+}
+
+.login-box1pop > button {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.login-box1pop > button > img {
+    filter: opacity(30%);
+    height: 30px;
+    transition-duration: 0.4s;
+}
+
+.login-box1pop > button:hover > img {
+    filter: opacity(80%);
 }
 
 .login-box2 {
@@ -39,6 +107,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     padding: 30px;
 
 }
@@ -57,7 +126,8 @@
     border: 1px solid white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     transition-duration: 0.4s;
-    color: gray
+    color: gray;
+    margin-bottom: 20px;
 }
 
 .login-google:hover {
@@ -71,6 +141,7 @@
 .login-google > span {
     padding-inline: 20px;
     font-size: 15px;
+    text-align: left;
 }
 
 .login-box2 > input {
@@ -83,8 +154,14 @@
     max-width: 400px;
 }
 
+.login-box2 > h2 {
+    margin: 0;
+    padding-bottom: 30px;
+}
+
 .login-box2 > h3 {
-    margin-top: 40px;
+    margin: 0;
+    padding-bottom: 10px;
     color: gray;
     font-weight: 400;
     font-size: 18px;
@@ -116,15 +193,15 @@
     max-width: 150px;
     cursor: pointer;
     border: none;
-    background-color: #5941F2;
+    background-color: #458C78;
     color: white;
-    border: 1.5px solid #5941F2;
+    border: 1.5px solid #458C78;
     transition-duration: 0.4s;
 }
 
 .login-button:hover {
     background-color: inherit;
-    color: #5941F2;
+    color: #458C78;
 }
 
 .signup-button {
@@ -151,7 +228,7 @@
     height: 1.5px;
     bottom: 0;
     left: 0;
-    background-color: #5941F2;
+    background-color: #458C78;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
@@ -163,7 +240,7 @@
 
 
 .signup-button:hover {
-    color: #5941F2;
+    color: #458C78;
 }
 
 @media only screen and (max-width: 880px) {
@@ -176,12 +253,38 @@
     .login {
         flex-direction: column;
         align-items: flex-start;
+        max-width: 450px;
+    }
+    .loginpop {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .login-box1 {
+        padding: 30px;
+        height: 100px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .login-box1 > h1 {
+        font-size: 25px;
     }
 }
 
 @media only screen and (max-width: 600px) {
+    .loginpop {
+        width: 90%;
+    }
     .login {
         margin-inline: 5%;
-        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .loginpop {
+        margin-top: 100px;
+    }
+    .loginpage {
+        padding-top: 20px;
     }
 }

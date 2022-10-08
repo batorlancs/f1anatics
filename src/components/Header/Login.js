@@ -6,8 +6,9 @@ import "./Login.css";
 
 import Popup3 from "./Popups/Popup3";
 import GoogleLogo from "../../pic/google.png";
+import CloseIcon from "../../pic/commenticons/delete.svg";
 
-function Login() {
+function Login(props) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,7 +22,7 @@ function Login() {
     }
 
     useEffect(() => {
-        if (auth.currentUser) navigate("/");
+        // if (auth.currentUser) navigate("/");
     }, [auth.currentUser])
 
     function signIn() {
@@ -43,7 +44,11 @@ function Login() {
                     .then(() => {
                         console.log("email sent");
                     });
-                navigate("/");
+                if (props.isPop) {
+                    props.cancel();
+                } else {
+                    navigate("/");
+                }
                 window.location.reload(false);
             })
             .catch((error) => {
@@ -54,8 +59,12 @@ function Login() {
     function signInGoogle() {
         signInWithPopup(auth, providerGoogle)
         .then((result) => {
-            navigate("/");
-            window.location.reload();
+            if (props.isPop) {
+                props.cancel();
+            } else {
+                navigate("/");
+            }
+            window.location.reload(false);
             // ...
         }).catch((error) => {
             setErrorMsg("google sign in was unsuccessful");
@@ -63,12 +72,18 @@ function Login() {
     }
 
     return (
-        <div className="loginpage">
+        <div className={props.isPop ? "loginpagepop" : "loginpage"}>
             { poppedUp && <Popup3 toggle={togglePoppedUp}/>}
-            <div className="login">
+            <div className={props.isPop ? "loginpop" : "login"}>
+                {!props.isPop ?
                 <div className="login-box1">
                     <h1>User Login</h1>
-                </div>
+                </div> :
+                <div className="login-box1pop">
+                    <button onClick={() => {
+                        props.cancel();
+                    }}><img src={CloseIcon}></img></button>
+                </div>}
                 <div className="login-box2">
                     <button className="login-google" onClick={signInGoogle}>
                         <img className="login-googlelogo" src={GoogleLogo} alt="google_icon"></img>
@@ -87,7 +102,10 @@ function Login() {
                     <button className="login-button" onClick={signIn}>Login</button>
                     <h4>Not a member yet?</h4>
                     <button className="signup-button" onClick={() => {
-                        navigate("/signup");
+                        if (props.isPop)
+                            props.register();
+                        else
+                            navigate("/signup");
                     }}>Sign up with a new account</button>
                     <h4>Forgot your password?</h4>
                     <button className="signup-button" onClick={() => {
@@ -95,7 +113,7 @@ function Login() {
                     }}>Send reset password email to your account</button>
                 </div>
             </div>
-            <div className="loginback"></div>
+            <div className={props.isPop ? "loginbackpop" : "loginback"}></div>
         </div>
     )
 }

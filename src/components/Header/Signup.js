@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../../Firebase";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import CloseIcon from "../../pic/commenticons/delete.svg";
+import AvatarLinks from "../../moredata/avatarlinks.json";
 
-function Signup() {
+function Signup(props) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +18,19 @@ function Signup() {
     useEffect(() => {
         if (auth.currentUser) navigate("/");
     }, [auth.currentUser])
+
+    function generateUsername(email) {
+        let username = email.slice(0, email.indexOf("@"));
+        for (let i = 0; i < 3; i++) {
+            username += Math.floor(Math.random() * 10);
+        }
+        return username;
+    }
+
+    function generateUserurl() {
+        let num = Math.floor(Math.random() * AvatarLinks.length) + 1;
+        return AvatarLinks(num);
+    }
 
     function createAccount() {
 
@@ -45,12 +60,27 @@ function Signup() {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                sendEmailVerification(user)
-                    .then(() => {
-                        console.log("email is sent");
+                
+                updateProfile(user, {
+                        displayName: generateUsername(email),
+                        photoURL: generateUserurl()
+                    }).then(() => {
+                        sendEmailVerification(user)
+                            .then(() => {
+                            console.log("email is sent");
+                            });
+                        console.log("name is set to: " + user.displayName);
+                        if (props.isPop) {
+                            props.cancel();
+                        } else {
+                            navigate("/");
+                            window.location.reload();
+                        }
+                        
+                    }).catch((error) => {
+                        setErrorMsg("a problem occured setting the name :(");
                     });
-                navigate("/");
-                window.location.reload();
+                
                 // ...
             })
             .catch((error) => {
@@ -64,11 +94,17 @@ function Signup() {
     }
 
     return (
-        <div className="loginpage">
-            <div className="login">
+        <div className={props.isPop ? "loginpagepop" : "loginpage"}>
+            <div className={props.isPop ? "loginpop" : "login"}>
+                {!props.isPop ?
                 <div className="login-box1">
                     <h1>User Sign Up</h1>
-                </div>
+                </div> :
+                <div className="login-box1pop">
+                    <button onClick={() => {
+                        props.cancel();
+                    }}><img src={CloseIcon}></img></button>
+                </div>}
                 <div className="login-box2">
                     <h2>Welcome<br/>to the F1 community!</h2>
                     <h3>Sign up with a new account</h3>
@@ -88,7 +124,7 @@ function Signup() {
                     <button onClick={createAccount} className="login-button">Sign Up</button>
                 </div>
             </div>
-            <div className="loginback"></div>
+            <div className={props.isPop ? "loginbackpop" : "loginback"}></div>
         </div>
     )
 }

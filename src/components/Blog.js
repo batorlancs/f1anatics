@@ -13,8 +13,8 @@ function Blog(props) {
                     <h1 className="blog-title">{blogdata.title}</h1>
                     <h3 className="blog-date">
                         {blogdata.date.year}.
-                        {blogdata.date.month > 10 ? blogdata.date.month : `0${blogdata.date.month}`}.
-                        {blogdata.date.day > 10 ? blogdata.date.day : `0${blogdata.date.day}`}.
+                        {blogdata.date.month >= 10 ? blogdata.date.month : `0${blogdata.date.month}`}.
+                        {blogdata.date.day >= 10 ? blogdata.date.day : `0${blogdata.date.day}`}.
                     </h3>
                 </div>
                 <img className="blog-mainimg" src={blogdata.mainImg} alt="blog_main_image"></img>

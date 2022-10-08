@@ -211,6 +211,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .blog {
+        margin-top: 60px;
+    }
     .blog-mainimgbox {
         height: 350px;
     }
