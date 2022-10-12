@@ -9,39 +9,34 @@ function Delete(props) {
 
     let navigate = useNavigate();
     const [blogsInOrder, setBlogsInOrder] = useState([]);
-    const [deleteBlogId, setDeleteBlogId] = useState("");
-    const [deleteBlogKey, setDeleteBlogKey] = useState("");
-
-    // console.log(deleteBlogKey);
+    const [deleteBlogId, setDeleteBlogId] = useState(""); // the id of the blog to delete
+    const [deleteBlogKey, setDeleteBlogKey] = useState(""); // the key of the blog to delete
 
     // sort blogs in order
     useEffect(() => {
         setBlogsInOrder(props.blogs.sort((a, b) => b.key - a.key));
     }, [])
 
+    // delete blog pictures in firebase storage
     function deleteBlogPictures(id, key) {
-        // Create a reference to the file to delete
         const mainRef = ref(storage, `images/${key}/main.png`);
         const secRef = ref(storage, `images/${key}/secondary.png`)
         // Delete the file
         deleteObject(mainRef).then(() => {
-        // File deleted successfully
             deleteObject(secRef).then(() => {
-                // File deleted successfully
                     console.log("all blog pictures deleted");
                     deleteBlog(id);
                 }).catch((error) => {
-                // Uh-oh, an error occurred!
                     console.log("error deleting secondary picture");
                     console.log(`images/${key}/secondary.png`);
                 });
         }).catch((error) => {
-        // Uh-oh, an error occurred!
             console.log("error deleting main picture");
             console.log(`images/${key}/main.png`);
         });
     }
 
+    // delete all blog data
     async function deleteBlog(id) {
         await deleteDoc(doc(db, 'blogs', id));
         setDeleteBlogId("");

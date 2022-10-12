@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { auth } from "../../../Firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Send Password Reset Email Popup
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Popup3(props) {
 
     const [errorMsg, setErrorMsg] = useState("");

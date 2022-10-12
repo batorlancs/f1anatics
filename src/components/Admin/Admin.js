@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Admin.css";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// This page can only be accessed by admins (in admin.json)
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Admin() {
     return (
         <div className="admin">

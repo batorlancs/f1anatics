@@ -8,30 +8,38 @@ import Popup3 from "./Popups/Popup3";
 import GoogleLogo from "../../pic/google.png";
 import CloseIcon from "../../pic/commenticons/delete.svg";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Login Page
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Login(props) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
-    const [poppedUp, setPoppedUp] = useState(false);
+    const [poppedUp, setPoppedUp] = useState(false); // is popup active
 
     let navigate = useNavigate();
 
+    // popup function
     function togglePoppedUp() {
         setPoppedUp(prev => !prev);
     }
 
+    // if logged in already navigate home
     useEffect(() => {
-        // if (auth.currentUser) navigate("/");
+        if (auth.currentUser) navigate("/");
     }, [auth.currentUser])
 
-    function signIn() {
 
+    // sign in user with email and password
+    function signIn() {
+        //  forms empty
         if (email === "" || password === "") {
             setErrorMsg("please fill out all forms");
             return;
         }
-
+        // email not valid
         if ( !(/\S+@\S+\.\S+/.test(email)) ) {
             setErrorMsg("email is not valid");
             return;
@@ -44,18 +52,21 @@ function Login(props) {
                     .then(() => {
                         console.log("email sent");
                     });
+                // navigate after task is done
                 if (props.isPop) {
                     props.cancel();
                 } else {
                     navigate("/");
                 }
                 window.location.reload(false);
+                //
             })
             .catch((error) => {
                 setErrorMsg("login was unsuccessful");
             });
     }
 
+    // sign in with google popup
     function signInGoogle() {
         signInWithPopup(auth, providerGoogle)
         .then((result) => {
@@ -75,14 +86,11 @@ function Login(props) {
         <div className={props.isPop ? "loginpagepop" : "loginpage"}>
             { poppedUp && <Popup3 toggle={togglePoppedUp}/>}
             <div className={props.isPop ? "loginpop" : "login"}>
-                {!props.isPop ?
-                <div className="login-box1">
-                    <h1>User Login</h1>
-                </div> :
+                {props.isPop &&
                 <div className="login-box1pop">
                     <button onClick={() => {
                         props.cancel();
-                    }}><img src={CloseIcon}></img></button>
+                    }}><img src={CloseIcon} alt="close_icon"></img></button>
                 </div>}
                 <div className="login-box2">
                     <button className="login-google" onClick={signInGoogle}>

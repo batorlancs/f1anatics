@@ -209,6 +209,10 @@
     .hero-picbox {
         margin-left: 0;
     }
+    .hero-buttonsesc {
+        font-size: 16px;
+    }
+
     .hero-desc {
         margin-top: 15px;
         margin-inline: 5%;

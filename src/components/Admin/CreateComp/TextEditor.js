@@ -5,6 +5,9 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from "html-to-draftjs";
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Text Editor when Creating or Updating the blog
+// --------------------------------------------------------------------------------------------------------------------------------
 
 class TextEditor extends Component {
 
@@ -25,12 +28,14 @@ class TextEditor extends Component {
         
     }
 
+    // update on all changes
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,
         });
     };
 
+    // convert editor data into an html String and store it in a state
     render() {
         const {editorState} = this.state;
         this.props.toggleEditor(draftToHtml(convertToRaw(editorState.getCurrentContent())).toString());

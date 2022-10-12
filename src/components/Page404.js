@@ -3,11 +3,16 @@ import "./Page404.css";
 import LoadingIcon from "../pic/publishing.svg";
 import { useNavigate } from "react-router-dom";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// 404 Page
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Page404() {
 
     let navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
+    // loading before showing 404 page
     useEffect(() => {
         setTimeout(() => {
             setLoading(true);
@@ -17,7 +22,7 @@ function Page404() {
     return (
         <div className="page404">
             { !loading ?
-            <img className="page404-loading" src={LoadingIcon}></img> :
+            <img className="page404-loading" src={LoadingIcon} alt="404page"></img> :
             <div className="page404-box">
                 <h1 className="page404-404">404</h1>
                 <h2 className="page404-desc">Sorry, the page you are looking for could not be found.</h2>

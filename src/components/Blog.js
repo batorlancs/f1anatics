@@ -2,6 +2,10 @@ import React from "react";
 import "./Blog.css";
 import Comments from "./Comments/Comments";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Blog page (Showing individual blogs)
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Blog(props) {
 
     const {blogdata} = props;
@@ -22,7 +26,8 @@ function Blog(props) {
             <div className="blog-contentbox">
                 { blogdata.content &&
                 <div className="blog-editor" dangerouslySetInnerHTML={{__html: blogdata.content}}></div> }
-                { !blogdata.hideSecImg && <div className="blog-secimgbox">
+                { !blogdata.hideSecImg &&
+                <div className="blog-secimgbox">
                     <img className="blog-secimg" src={blogdata.secImg} alt="blog_secondary_image"></img>
                 </div> }
                 { blogdata.content2 &&

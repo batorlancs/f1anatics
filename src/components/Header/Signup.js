@@ -6,6 +6,10 @@ import "./Login.css";
 import CloseIcon from "../../pic/commenticons/delete.svg";
 import AvatarLinks from "../../moredata/avatarlinks.json";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Sign up/Register page
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Signup(props) {
 
     const [email, setEmail] = useState("");
@@ -15,10 +19,12 @@ function Signup(props) {
 
     let navigate = useNavigate();
 
+    // if logged in, navigate home
     useEffect(() => {
         if (auth.currentUser) navigate("/");
     }, [auth.currentUser])
 
+    // generate username from email
     function generateUsername(email) {
         let username = email.slice(0, email.indexOf("@"));
         for (let i = 0; i < 3; i++) {
@@ -27,28 +33,30 @@ function Signup(props) {
         return username;
     }
 
+    // randomize an avatar picture for the user
     function generateUserurl() {
         let num = Math.floor(Math.random() * AvatarLinks.length) + 1;
         return AvatarLinks(num);
     }
 
+    // create Account with password and email
     function createAccount() {
-
+        // empty forms
         if (email === "" || password === "" || confPassword === "") {
             setErrorMsg("please fill out all forms");
             return;
         }
-
+        // not valid email
         if ( !(/\S+@\S+\.\S+/.test(email)) ) {
             setErrorMsg("email is not valid");
             return;
         }
-
+        // passwords do not match
         if (password !== confPassword) {
             setErrorMsg("passwords do not match");
             return;
         }
-
+        // password is short
         if (password.length < 8) {
             setErrorMsg("password must be minimum 8 characters");
             return;
@@ -70,24 +78,21 @@ function Signup(props) {
                             console.log("email is sent");
                             });
                         console.log("name is set to: " + user.displayName);
+                        // navigation after task is done
                         if (props.isPop) {
                             props.cancel();
                         } else {
                             navigate("/");
                             window.location.reload();
                         }
+                        // 
                         
                     }).catch((error) => {
                         setErrorMsg("a problem occured setting the name :(");
                     });
-                
-                // ...
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
                 setErrorMsg("sign up unsuccessful");
-                // ..
             });
 
         
@@ -96,17 +101,15 @@ function Signup(props) {
     return (
         <div className={props.isPop ? "loginpagepop" : "loginpage"}>
             <div className={props.isPop ? "loginpop" : "login"}>
-                {!props.isPop ?
-                <div className="login-box1">
-                    <h1>User Sign Up</h1>
-                </div> :
+                {props.isPop &&
                 <div className="login-box1pop">
                     <button onClick={() => {
                         props.cancel();
-                    }}><img src={CloseIcon}></img></button>
+                    }}><img src={CloseIcon} alt="close_icon"></img></button>
                 </div>}
                 <div className="login-box2">
-                    <h2>Welcome<br/>to the F1 community!</h2>
+                    <h1>Welcome!</h1>
+                    <h2>Join the community to always be updated and have chats with other members of f1anatics.</h2>
                     <h3>Sign up with a new account</h3>
                     <input placeholder="email" type="email" onChange={(event) => {
                         setEmail(event.target.value);

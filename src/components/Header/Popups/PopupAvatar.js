@@ -5,8 +5,13 @@ import CloseIcon from "../../../pic/commenticons/delete.svg";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../../Firebase";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Set Avatar Popup
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function PopupAvatar(props) {
 
+    // update profile avatar
     function setPhotoURL(url) {
         updateProfile(auth.currentUser, {
             photoURL: url
@@ -15,11 +20,9 @@ function PopupAvatar(props) {
             window.location.reload(false);
             console.log("url set");
         }).catch((error) => {
-            console.log("a problem occured setting the picture url");
+            console.log("a problem occured setting the photo url");
         });
     }
-
-    console.log(AvatarLinks.length);
 
     return (
         <div className="loginpagepop">
@@ -27,16 +30,18 @@ function PopupAvatar(props) {
                 <div className="login-box1pop">
                     <button onClick={() => {
                         props.cancel();
-                    }}><img src={CloseIcon}></img></button>
+                    }}><img src={CloseIcon} alt="close_icon"></img></button>
                 </div>
-                <h2 className="avatar-title">Select your avatar!</h2>
+                <div className="avatar-title">
+                    <h2>Select your <b>avatar!</b></h2>
+                </div>
                 <div className="avatar-list">
                     {AvatarLinks.map((pic) => (
                         <div className="avatar-list-element">
-                            <button className="profile-avatar" onClick={() => {
+                            <button className="profile-avatar2" onClick={() => {
                                 setPhotoURL(pic);
                             }}>
-                                <img className="profile-avatarpic" src={pic}></img>
+                                <img className="profile-avatarpic" src={pic} alt="profile_avatar_choice"></img>
                                 <p>Select</p>
                             </button>
                         </div>

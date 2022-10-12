@@ -18,7 +18,7 @@
     font-family: 'Montserrat', sans-serif;
     padding: 0;
     border: none;
-    background-color: whitesmoke;
+    background-color: rgb(234, 234, 234);
     cursor: pointer;
     transition-duration: 0.4s;
 }
@@ -81,7 +81,7 @@
 }
 
 .allblogs-odd {
-    background-color: whitesmoke;
+    background-color: rgb(234, 234, 234);
     display: flex;
     justify-content: center;
     align-items: center;

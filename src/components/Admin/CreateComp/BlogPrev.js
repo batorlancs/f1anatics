@@ -2,6 +2,10 @@ import React from "react";
 import uuid from "react-uuid";
 import "../../Blog.css";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Preview of blog
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function BlogPrev(props) {
 
     const blankTitle = "xxxx xxx xxxxxx x xxxxxx xx xxxxxxxx xx xxxx";

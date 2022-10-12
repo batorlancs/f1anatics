@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../Firebase";
 import { auth } from "../../Firebase";
-import { doc, getDocs, setDoc , addDoc, collection, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDocs, setDoc, collection, getDoc, deleteDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid';
 import { useNavigate } from "react-router-dom";
 
@@ -17,12 +17,15 @@ import Login from "../Header/Login";
 import "./Comments.css";
 import Signup from "../Header/Signup";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Commments for each individual Blog Page
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Comments(props) {
 
     const [commentForm, setCommentForm] = useState("");
     const [replyForm, setReplyForm] = useState("");
     const [comments, setComments] = useState([]);
-    const [replies, setReplies] = useState([]);
     const [replyName, setReplyName] = useState("");
     const [replyId, setReplyId] = useState("");
     const [deleteComId, setDeleteComId] = useState("");
@@ -38,6 +41,7 @@ function Comments(props) {
         refreshComments();
     }, [])
 
+    // refresh all comments and replies on this blog
     function refreshComments() {
         const getReplies = async (id) => {
             const data = await getDocs(collection(db, "blogs", props.blogid, "comments", id, "replies"));
@@ -64,6 +68,7 @@ function Comments(props) {
         getComments();
     }
 
+    // count how many comments there are in total
     useEffect(() => {
         let ctr = 0;
         ctr = comments.length;
@@ -75,6 +80,7 @@ function Comments(props) {
         setCommentCount(ctr);
     }, [comments])
 
+    // like a comment
     const like = async(commentid) => {
 
         if (auth.currentUser == null) {
@@ -101,6 +107,7 @@ function Comments(props) {
         refreshComments();
     }
 
+    // reply a comment that is reply to another comment
     const replylike = async(commentid, replyid) => {
 
         if (auth.currentUser == null) {
@@ -127,6 +134,7 @@ function Comments(props) {
         refreshComments();
     }
 
+    // check if the user has liked the comment before
     function likedBefore(arr) {
         if (auth.currentUser == null) {
             return false;
@@ -137,7 +145,9 @@ function Comments(props) {
         return false;
     }
 
+    // post comment from the main form
     function postComment() {
+        // check if user is logged in
         if (auth.currentUser == null) {
             setLoginPop(true);
             return;
@@ -167,7 +177,9 @@ function Comments(props) {
         setCommentForm("");
     }
 
+    // add reply to the comment selected with the popup form
     function postReply(commentid, replyTo) {
+        // check if user is logged in
         if (auth.currentUser == null) {
             navigate("/login");
             return;
@@ -208,6 +220,8 @@ function Comments(props) {
         refreshComments();
     }
 
+    // popup functions
+
     function cancelReply() {
         setReplyName("");
         setReplyId("");
@@ -241,15 +255,16 @@ function Comments(props) {
                     <input id="comment-input" type="text" placeholder="Add a Comment..." className="com-post-text" onChange={(event) => {
                         setCommentForm(event.target.value);
                     }}/>
-                    <button onClick={postComment}><img src={PostIcon}></img></button>
+                    <button onClick={postComment}><img src={PostIcon} alt="comment_post_icon"></img></button>
                 </div>
             </div>
             <p className="com-desc">{commentCount} comment(s)</p>
+            {/* COMMMENTS */}
             {comments.length > 0 && comments.map((com) => (
                 <div className="com" key={com.id}>
                     <div className="com-main com-com">
                         <div className="com-picbox">
-                            <img className="com-pic" src={com.user.photoURL}></img>
+                            <img className="com-pic" src={com.user.photoURL != null ? com.user.photoURL : ProfilePic} alt="comment_profile_avatar"></img>
                         </div>
                         <div className="com-cont">
                             <div className="com-cont-top">
@@ -263,8 +278,8 @@ function Comments(props) {
                                 <p>{com.likes}</p>
                                 <button className="com-cont-up" onClick={() => {like(com.id)}}>
                                     {likedBefore(com.likeIDs) ?
-                                    <img src={ArrowDownIcon}></img> :
-                                    <img src={ArrowUpIcon}></img>}
+                                    <img src={ArrowDownIcon} alt="thumbs_up_notfilled"></img> :
+                                    <img src={ArrowUpIcon} alt="thumbs_up_filled"></img>}
                                 </button>
                                 <button className="com-cont-reply" onClick={() => {
                                     if (auth.currentUser == null) {
@@ -273,19 +288,19 @@ function Comments(props) {
                                     }
                                     setReplyName(com.user.name);
                                     setReplyId(com.id);
-                                }}><img src={ReplyIcon}></img>Reply</button>
+                                }}><img src={ReplyIcon} alt="comment_reply_icon"></img>Reply</button>
                                 {auth.currentUser !== null && auth.currentUser.uid === com.user.id && <button className="com-cont-reply" onClick={() => {
                                     setDeleteComId(com.id);
                                     setDeleteReplies(com.replies);
-                                }}><img src={DeleteIcon}></img>Delete</button>}
+                                }}><img src={DeleteIcon} alt="comment-delete-icon"></img>Delete</button>}
                             </div>
                         </div>
                     </div>
-                    
+                    {/* REPLIES */}
                     {com.replies != null && com.replies.map((reply) => (
                         <div className="com-reply com-com" key={reply.id}>
                             <div className="com-picbox">
-                                <img className="com-pic" src={reply.user.photoURL}></img>
+                                <img className="com-pic" src={reply.user.photoURL} alt="reply_profile_avatar"></img>
                             </div>
                             <div className="com-cont">
                                 <div className="com-cont-top">
@@ -299,8 +314,8 @@ function Comments(props) {
                                     <p>{reply.likes}</p>
                                     <button className="com-cont-up" onClick={() => {replylike(com.id, reply.id)}}>
                                         {likedBefore(reply.likeIDs) ?
-                                        <img src={ArrowDownIcon}></img> :
-                                        <img src={ArrowUpIcon}></img>}
+                                        <img src={ArrowDownIcon} alt="thumbs_up_notfilled"></img> :
+                                        <img src={ArrowUpIcon} alt="thumbs_up_filled"></img>}
                                     </button>
                                     <button className="com-cont-reply" onClick={() => {
                                         if (auth.currentUser == null) {
@@ -309,11 +324,11 @@ function Comments(props) {
                                         }
                                         setReplyName(reply.user.name);
                                         setReplyId(com.id);
-                                    }}><img src={ReplyIcon}></img>Reply</button>
+                                    }}><img src={ReplyIcon} alt="reply_reply_icon"></img>Reply</button>
                                     {auth.currentUser !== null && auth.currentUser.uid === reply.user.id && <button className="com-cont-reply" onClick={() => {
                                         setDeleteComId(com.id);
                                         setDeleteRepId(reply.id);
-                                    }}><img src={DeleteIcon}></img>Delete</button>}
+                                    }}><img src={DeleteIcon} alt="reply-delete_icon"></img>Delete</button>}
                                 </div>
                             </div>
                         </div>

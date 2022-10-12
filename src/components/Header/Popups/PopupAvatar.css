@@ -5,6 +5,8 @@
     justify-content: center;
     /* align-items: center; */
     flex-wrap: wrap;
+    background-color: rgb(59, 59, 59);
+    padding-top: 20px;
 }
 
 .avatar-list-element {
@@ -12,8 +14,53 @@
 }
 
 .avatar-title {
+    width: 100%;
+    background-color: rgb(51, 51, 51);
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.avatar-title > h2{
     font-size: 30px;
     margin-top: 30px;
-    margin-bottom: 10px;
     font-weight: 400;
+}
+
+.profile-avatar2 {
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    border-radius: 10%;
+    background-color: #424242;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.profile-avatar2 > p {
+    position: absolute;
+    color: white;
+    font-weight: 500;
+    opacity: 0%;
+    padding-top: 30px;
+    transition-duration: 0.4s;
+}
+
+.profile-avatar2:hover > p {
+    padding-top: 0px;
+    opacity: 100%;
+}
+
+.profile-avatar2:hover > .profile-avatarpic {
+    filter: brightness(50%);
+}
+
+.profile-avatar2:hover {
+    background-color: #6d6d6d;
 }

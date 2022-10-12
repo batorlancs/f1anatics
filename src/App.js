@@ -19,6 +19,7 @@ import Page404 from "./components/Page404";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
+import UnderDev from "./components/UnderDev";
 
 function App() {
 
@@ -107,6 +108,7 @@ function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
+                <Route path="/underdev" element={<UnderDev />}></Route>
                 <Route path="/404" element={<Page404 />}></Route>
                 <Route path="*" element={<Page404 />} />
                 <Route path="" element={<Page404 />} />

@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react"
 import { auth } from "../../../Firebase";
 import { updateProfile } from "firebase/auth";
 import "../Profile.css";
+import CloseIcon from "../../../pic/commenticons/delete.svg";
+
+// --------------------------------------------------------------------------------------------------------------------------------
+// Change Name Popup
+// --------------------------------------------------------------------------------------------------------------------------------
 
 function Popup(props) {
 
     const [errorMsg, setErrorMsg] = useState("");
     const [newName, setNewName] = useState(props.name);
 
+    // set input value to the name
     useEffect(() => {
         document.getElementById("nameInput").value = props.name;
     }, [])
 
+    // update name of the user
     function updateName() {
         if (props.name === newName) {
             setErrorMsg("this is your current name");
@@ -41,6 +48,11 @@ function Popup(props) {
     return (
         <div className="profile-popup-page">
             <div className="profile-popup">
+                <div className="login-box1pop">
+                    <button onClick={() => {
+                        props.toggle();
+                    }}><img src={CloseIcon} alt="close_icon"></img></button>
+                </div>
                 <h2>your new displayed name:</h2>
                 { errorMsg !== "" && <p className="red">{errorMsg}</p>}
                 <input id="nameInput" type="text" maxLength="20" onChange={(event) => {

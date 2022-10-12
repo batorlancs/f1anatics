@@ -11,19 +11,23 @@ import "./Create.css";
 import Publishing from "../../pic/publishing.svg";
 import TextEditor from "./CreateComp/TextEditor";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Create or Update a Post
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function Create(props) {
 
     const [title, setTitle] = useState("");
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
 
-    const [editor1, setEditor1] = useState(null);
-    const [editor2, setEditor2] = useState(null);
-    const [isSecImg, setIsSecImg] = useState(false);
+    const [editor1, setEditor1] = useState(null); // text 1 of blog
+    const [editor2, setEditor2] = useState(null); // text 2 of blog
+    const [isSecImg, setIsSecImg] = useState(false); // if user wants second image to appear in the blog
 
-    const [poppedUp, setPoppedUp] = useState(false);
-    const [stick1, setStick1] = useState("");
-    const [stick2, setStick2] = useState("");
+    const [poppedUp, setPoppedUp] = useState(false); // preview popup 1
+    const [stick1, setStick1] = useState(""); // editor 1 stickyness
+    const [stick2, setStick2] = useState(""); // editor 2 stickyness
 
     function toggleEditor1(props) {
         setEditor1(props);
@@ -47,6 +51,7 @@ function Create(props) {
     const blogsCollection = collection(db, "blogs");
     let navigate = useNavigate();
 
+    // if updating the blog, set the inputs to the current values
     useEffect(() => {
         if (props.blogdata != null) {
             document.getElementById("title").value = props.blogdata.title;
@@ -59,6 +64,7 @@ function Create(props) {
         }
     }, [])
 
+    // update uploaded images in the firebase storage
     const updateImages = () => {
         // set loading animation
         setIsPublishing(true);
@@ -103,6 +109,7 @@ function Create(props) {
         }
     }
 
+    // update blog post
     const updatePost = async ({url1, url2}) => {
         const updateRef = doc(db, "blogs", props.blogdata.id);
         if (title !== "") await setDoc(updateRef, { title: title }, { merge: true});
@@ -118,6 +125,7 @@ function Create(props) {
         window.location.reload(false);
     };
 
+    // upload images in the firebase storage
     const uploadImages = () => {
         // error checking
         if (title === "" || name === "" || desc === "" || editor1 === "" || editor2 === "") {
@@ -157,6 +165,7 @@ function Create(props) {
             })
     }
 
+    // create blog post
     const createPost = async ({url1, url2}) => {
         await addDoc(blogsCollection, {
             key: (props.blogNumber + 1),

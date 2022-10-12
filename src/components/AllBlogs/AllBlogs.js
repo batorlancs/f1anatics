@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AllBlogs.css";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Show All Blogs in order
+// --------------------------------------------------------------------------------------------------------------------------------
+
 function AllBlogs(props) {
 
     const [blogsInOrder, setBlogsInOrder] = useState([]);
@@ -21,7 +25,7 @@ function AllBlogs(props) {
                     }}>
                         <div className="allblogs-blog" key={blog.id}>
                             <div className="allblogs-box1">
-                                <img className="allblogs-img" src={blog.mainImg}></img>
+                                <img className="allblogs-img" src={blog.mainImg} alt="blog_image_preview"></img>
                             </div>
                             <div className="allblogs-box2">
                                 <h1>{blog.title}</h1>
@@ -32,6 +36,7 @@ function AllBlogs(props) {
                     </button>
                 )
             })}
+            {/* add a rectangle if the number of blogs is odd to fill in the space */}
             {blogsInOrder.length % 2 === 1 && <div className="allblogs-odd"></div>}
         </div>
     )

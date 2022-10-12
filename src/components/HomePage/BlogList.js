@@ -3,6 +3,9 @@ import {useNavigate } from "react-router-dom";
 import ArrowIcon from "../../pic/closeicon.svg";
 import "./BlogList.css";
 
+// --------------------------------------------------------------------------------------------------------------------------------
+// Blog List page to show the 2nd, 3rd, 4th most recent post in a list
+// --------------------------------------------------------------------------------------------------------------------------------
 
 function BlogList(props) {
 
@@ -31,7 +34,7 @@ function BlogList(props) {
                                         navigate(`/blog/${blog.id}`);
                                         props.blogClick();
                                     }}>Read more
-                                    <img className="hero-button-arrow" src={ArrowIcon}></img></button>
+                                    <img className="hero-button-arrow" src={ArrowIcon} alt="button_arrow_icon"></img></button>
                                 </div>
                             </div>
                         </div>
