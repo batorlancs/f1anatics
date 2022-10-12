@@ -20,4 +20,5 @@ service cloud.firestore {
     match /blogs/{blog}/comments/{comment}/replies/{reply} {
     	allow write: if request.auth.uid != null;
     }
+  }
 }
