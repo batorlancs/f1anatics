@@ -1,0 +1,236 @@
+.contact {
+    margin-top: 80px;
+    height: 800px;
+    background-color: #458C78;
+}
+
+.contact-box {
+    width: 700px;
+    margin-inline: 10%;
+}
+
+.contact-box > h1 {
+    color: white;
+    font-size: 50px;
+    padding-top: 60px;
+    margin: 0;
+}
+
+.contact-box > p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.contact-form-text {
+    padding-block: 10px;
+    padding-inline: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    margin-block: 20px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.contact-form-text::placeholder {
+    color: #a1fcb9;
+}
+
+.contact-form-submit {
+    height: 50px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    color: black;
+    background-color: #a1fcb9;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    transition-duration: 0.4s;
+}
+
+.contact-form-submit:hover {
+    border: 1.5px solid #a1fcb9;
+    color:#a1fcb9;
+    background-color: transparent;
+}
+
+.contact-form-error {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    margin-block: 10px;
+}
+
+.contact-form-error-red {
+    color: rgb(255, 136, 136);
+    font-weight: 400;
+    font-size: 15px;
+    margin-block: 10px;
+}
+
+.contact-form-error-green {
+    color: rgb(171, 255, 147);
+    font-weight: 400;
+    font-size: 15px;
+    margin-block: 10px;
+}
+
+.contact-form-error-yellow {
+    color: rgb(224, 255, 123);
+    font-weight: 400;
+    font-size: 15px;
+    margin-block: 10px;
+}
+
+.contact-shape {
+    margin-top: 80px;
+    position: absolute;
+    background-color: #a1fcb9;
+    top: 0;
+    right: 0;
+    height: 800px;
+    width: 200px;
+}
+
+.contact-details {
+    margin-top: 160px;
+    position: absolute;
+    background-color: rgb(41, 41, 41);
+    top: 0;
+    right: 0;
+    height: 450px;
+    width: 500px;
+    padding: 50px;
+}
+
+.contact-details > h1 {
+    font-size: 28px;
+    color: white;
+    font-weight: 600;
+}
+
+.contact-details-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contact-details-row > h2 {
+    color: rgb(188,   188, 188);
+    font-weight: 300;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.contact-details-pic-white{
+    height: 30px;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    opacity: 70%;
+}
+
+.contact-details-pic-black{
+    height: 26px;
+    margin-right: 4px;
+    opacity: 70%;
+}
+
+@media only screen and (min-width: 1600px) {
+    .contact-box > h1 {
+        padding-top: 120px;
+    }
+    .contact-details {
+        margin-top: 230px;
+        width: 600px;
+    }
+    .contact {
+        height: 1000px;
+    }
+    .contact-shape {
+        height: 1000px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .contact-details {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .contact {
+        height: auto;
+    }
+    .contact-details {
+        margin-top: none;
+        position: relative;
+        margin-inline: 10%;
+        width: 80%;
+        height: 400px;
+        background-color: transparent;
+        padding: 0;
+    }
+    .contact-details > h1 {
+        font-size: 40px;
+    }
+    .contact-details-row > h2 {
+        color: white;
+    }
+    .contact-details-pic-black, .contact-details-pic-white {
+        opacity: 100%;
+    }
+    .contact-shape {
+        width: 0;
+        height: 0;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .contact-box {
+        width: 80%;
+    }
+    .contact-form {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .contact {
+        margin-top: 60px;
+    }
+    .contact-box > h1 {
+        font-size: 40px;
+    }
+    .contact-box > p {
+        font-size: 15px;
+    }
+    .contact-details > h1 {
+        font-size: 30px;
+    }
+    .contact-details-pic-white{
+        height: 24px;
+    }
+    
+    .contact-details-pic-black{
+        height: 22px;
+    }
+    .contact-details-row > h2 {
+        font-size: 15px;
+    }
+    .contact-details {
+        margin-top: 100px;
+    }
+}

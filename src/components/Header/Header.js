@@ -41,8 +41,6 @@ function Header() {
             setNavbar(true);
         }
     }
-
-    
     
 
     return (
@@ -56,7 +54,7 @@ function Header() {
                 <button className="header-button1" onClick={() => (navigate("/allblogs"))}>blogs</button>
                 <button className="header-button1" onClick={() => (navigate("/underdev"))}>.drivers.</button>
                 <button className="header-button1" onClick={() => (navigate("/underdev"))}>.teams.</button>
-                <button className="header-button1" onClick={() => (navigate("/underdev"))}>.contact.</button>
+                <button className="header-button1" onClick={() => (navigate("/contact"))}>contact</button>
                 { auth.currentUser ?
                 <button className="header-button1" onClick={() => (navigate("/profile"))}>profile</button> :
                 <button className="header-button1" onClick={() => (navigate("/login"))}>login</button> }

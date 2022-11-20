@@ -4,6 +4,7 @@ import { logEvent } from "firebase/analytics";
 import { useNavigate } from "react-router-dom";
 import BlogList from "./HomePage/BlogList";
 import Hero from "./HomePage/Hero";
+import ViewMore from "./HomePage/ViewMore";
 
 // --------------------------------------------------------------------------------------------------------------------------------
 // Home page 
@@ -30,6 +31,7 @@ function Home(props) {
         <div>
             {blogs.length > 0 && <Hero blogs={blogs} blogNumber={blogNumber} navigateToHeroBlog={navigateToHeroBlog} blogClick={blogClick} calcPosted={props.calcPosted}/>}
             {blogs.length > 0 && <BlogList blogs={blogs} blogClick={blogClick}/>}
+            {blogs.length > 0 && <ViewMore />}
         </div>
     )
 }
