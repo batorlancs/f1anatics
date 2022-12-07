@@ -23,11 +23,15 @@ function Create(props) {
 
     const [editor1, setEditor1] = useState(null); // text 1 of blog
     const [editor2, setEditor2] = useState(null); // text 2 of blog
+    const [tagValue, setTagValue] = useState(""); // add tag input
+    const [tags, setTags] = useState([]); // tags of the blog
     const [isSecImg, setIsSecImg] = useState(false); // if user wants second image to appear in the blog
 
     const [poppedUp, setPoppedUp] = useState(false); // preview popup 1
     const [stick1, setStick1] = useState(""); // editor 1 stickyness
     const [stick2, setStick2] = useState(""); // editor 2 stickyness
+
+    console.log(tags);
 
     function toggleEditor1(props) {
         setEditor1(props);
@@ -59,6 +63,8 @@ function Create(props) {
             document.getElementById("desc").value = props.blogdata.desc;
             document.getElementById("sec-img-check").checked = props.blogdata.hideSecImg;
             setIsSecImg(props.blogdata.hideSecImg);
+            if (props.blogdata.tags != null)
+                setTags(props.blogdata.tags);
         } else {
             console.log("not update");
         }
@@ -119,6 +125,7 @@ function Create(props) {
         if (editor2 !== "") await setDoc(updateRef, { content2: editor2 }, { merge: true});
         if (url1 !== "") await setDoc(updateRef, { mainImg: url1 }, { merge: true});
         if (url2 !== "") await setDoc(updateRef, { secImg: url2 }, { merge: true});
+        await setDoc(updateRef, {tags: tags}, {merge: true});
         await setDoc(updateRef, { hideSecImg: isSecImg }, { merge: true});
 
         navigate("/");
@@ -182,6 +189,7 @@ function Create(props) {
                 day: new Date().getDate().toString(),
                 time: new Date().getTime()
             },
+            tags: tags,
             hideSecImg: isSecImg,
             comments: []
         });
@@ -261,6 +269,34 @@ function Create(props) {
                         setImgSec(event.target.files[0]);
                         setErrorMsg("");
                     }}/>
+
+                    <h2>Create Tags</h2>
+                    <div className="create-seetags">
+                        {tags != null && tags.map((tag) => (
+                            <div className="create-tag" key={tag}>
+                                <p>{tag}</p>
+                                <button onClick={() => {
+                                    const newVal = tags.filter((item) => item !== tag);
+                                    setTags(newVal);
+                                }}>x</button>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="create-createtags">
+                        <input type="text" id="addtag" onChange={(event) => {
+                            setTagValue(event.target.value);
+                        }}/>
+                        <button onClick={() => {
+                            let str = tagValue;
+                            str = str.replace(/\s/g, '');
+                            if (tags.indexOf(str) === -1 && str !== "") {
+                                setTags(prev => [...prev, str]);
+                                setTagValue("");
+                                document.getElementById("addtag").value = "";
+                            }
+                        }}>Add Tag</button>
+                    </div>
+
 
                     <div className="check">
                         <input type="checkbox" id="sec-img-check" name="sec-img-check" onChange={(event) => {

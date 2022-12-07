@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ViewMore.css";
+import ArrowIcon from "../../pic/closeicon.svg";
 
 
 function ViewMore() {
@@ -12,7 +13,8 @@ function ViewMore() {
             <button className="viewmore-button" onClick={() => {
                 navigate(`/allblogs`);
             }}>
-                View More Blogs
+                <h3 className="viewmore-text">View More Blogs</h3>
+                <img className="viewmore-arrow" src={ArrowIcon}></img>
             </button>
         </div>
     )

@@ -73,8 +73,8 @@ function Header() {
                 <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/allblogs");}}>ALL BLOGS</button>
                 <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/underdev");}}>CURRENT DRIVERS</button>
                 <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/underdev");}}>CURRENT TEAMS</button>
-                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/underdev");}}>ABOUT US</button>
-                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/underdev");}}>CONTACT US</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/about");}}>ABOUT US</button>
+                <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/contact");}}>CONTACT US</button>
                 <button className={dropDown ? "drop-link" : "drop-link-off"}  onClick={() => {toggleDrop(); navigate("/");}}>HOME</button>
             </div>
             {dropDown && <div className="drop-back">

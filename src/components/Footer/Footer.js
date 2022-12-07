@@ -32,7 +32,7 @@ function Footer() {
                     </p>
                 </div>
                 <div className="footer-column columntype2">
-                    <Link to="/" className="footer-link">All Blogs</Link>
+                    <Link to="/allblogs" className="footer-link">All Blogs</Link>
                     <Link to="/" className="footer-link">Current Drivers</Link>
                     <Link to="/" className="footer-link">Current Teams</Link>
                     <Link to="/profile" className="footer-link">Profile</Link>
@@ -40,8 +40,8 @@ function Footer() {
                     <Link to="/signup" className="footer-link">Sign Up</Link>
                 </div>
                 <div className="footer-column columntype3">
-                    <Link to="/" className="footer-link">About us</Link>
-                    <Link to="/" className="footer-link">Contact us</Link>
+                    <Link to="/about" className="footer-link">About us</Link>
+                    <Link to="/contact" className="footer-link">Contact us</Link>
                     <Link to="/" className="footer-link">SEO map</Link>
                 </div>
                 <div className="footer-column columntype4">
