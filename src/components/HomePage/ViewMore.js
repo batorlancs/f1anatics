@@ -14,7 +14,7 @@ function ViewMore() {
                 navigate(`/allblogs`);
             }}>
                 <h3 className="viewmore-text">View More Blogs</h3>
-                <img className="viewmore-arrow" src={ArrowIcon}></img>
+                <img className="viewmore-arrow" src={ArrowIcon} alt="right-point-arrow"></img>
             </button>
         </div>
     )

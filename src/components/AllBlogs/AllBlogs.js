@@ -20,10 +20,10 @@ function AllBlogs(props) {
         <div className="allblogs">
             {blogsInOrder.slice(0, 100).map((blog) => {
                 return (
-                    <button onClick={() => {
+                    <button key={blog.id} onClick={() => {
                         navigate(`/blog/${blog.id}`);
                     }}>
-                        <div className="allblogs-blog" key={blog.id}>
+                        <div className="allblogs-blog">
                             <div className="allblogs-box1">
                                 <img className="allblogs-img" src={blog.mainImg} alt="blog_image_preview"></img>
                             </div>
