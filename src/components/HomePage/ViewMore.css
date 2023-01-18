@@ -2,16 +2,15 @@
     margin: 0;
     margin-inline: 10%;
     margin-bottom: 50px;
+    height: 80px;
 }
 
 .viewmore-button {
     margin: 0;
-    height: 80px;
+    height: 100%;
     width: 100%;
     border: 1.5px solid #e8e8e8;
     background-color: #e8e8e8;
-    /* border: 1.5px solid #458C78;
-    background-color: #458C78; */
     color: gray;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Page404.css";
-import LoadingIcon from "../pic/publishing.svg";
+import LoadingIcon from "../../pic/publishing.svg";
 import { useNavigate } from "react-router-dom";
 
 // --------------------------------------------------------------------------------------------------------------------------------

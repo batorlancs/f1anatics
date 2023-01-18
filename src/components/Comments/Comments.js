@@ -13,9 +13,9 @@ import PostIcon from "../../pic/commenticons/post.svg";
 import DeleteIcon from "../../pic/commenticons/delete.svg";
 import Reply from "./Reply";
 import DeletePopup from "./Popups/DeletePopup";
-import Login from "../Header/Login";
+import Login from "../Profile/Login";
+import Signup from "../Profile/Signup";
 import "./Comments.css";
-import Signup from "../Header/Signup";
 
 // --------------------------------------------------------------------------------------------------------------------------------
 // Commments for each individual Blog Page

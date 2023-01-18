@@ -8,19 +8,19 @@ import Admins from "./admin/admins.json";
 import Home from "./components/Home";
 import Create from "./components/Admin/Create";
 import Blog from "./components/Blog";
-import Login from "./components/Header/Login";
-import Signup from "./components/Header/Signup";
-import Profile from "./components/Header/Profile";
+import Login from "./components/Profile/Login";
+import Signup from "./components/Profile/Signup";
+import Profile from "./components/Profile/Profile";
 import Admin from "./components/Admin/Admin";
 import Delete from "./components/Admin/Delete.js";
 import AllBlogs from "./components/AllBlogs/AllBlogs";
-import ScrollToTop from "./components/ScrollToTop";
-import Page404 from "./components/Page404";
+import ScrollToTop from "./components/Other/ScrollToTop";
+import Page404 from "./components/Other/Page404";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
-import UnderDev from "./components/UnderDev";
+import UnderDev from "./components/Other/UnderDev";
 import "./App.css";
 
 function App() {
