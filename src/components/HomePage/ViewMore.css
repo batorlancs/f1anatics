@@ -1,6 +1,6 @@
 .viewmore {
     margin: 0;
-    margin-inline: 10%;
+    /* margin-inline: 10%; */
     margin-bottom: 50px;
     height: 80px;
 }
@@ -42,6 +42,12 @@
     height: 30px;
     margin-left: 10px;
     transition-duration: 0.4s;
+}
+
+@media only screen and (min-width: 500px) {
+    .viewmore {
+        margin-inline: 10%;
+    }
 }
 
 @media only screen and (max-width: 500px) {
