@@ -3,7 +3,7 @@
 ## About
 A Formula 1 blog website written in JavaScript with React and connected to Firebase database. This website allows admin and only admins to create/update/delete articles, whilst users can read the articles, and interact with them.
 
-## Accessibility
+## Features
 <b>Users</b> (normal users / not admins) can read blogs, login, register, comment, reply to comment, like a comment, delete a comment
 Further actions will be added soon..
 
